@@ -6,8 +6,6 @@ const getType = async (req, res) => {
     try {
         const type = Type.findAll();
         
-        
-
         if(type && type.length > 0){
             return res.status(200).json(type);
         }

@@ -1,6 +1,6 @@
 const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/pokemon";
-const { Pokemon } = require("../models/Pokemon");
+const { Pokemon } = require("../db");
 
 const getPokemonByName = async (req, res) => {
     try {
