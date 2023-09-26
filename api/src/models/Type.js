@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
     sequelize.define('type', {
         id: {
             type: DataTypes.UUID, 
-            defaultValue: sequelize.UUIDV4, 
+            defaultValue: DataTypes.UUIDV4, 
             allowNull: false,
             primaryKey: true 
         }, 
@@ -12,5 +12,5 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         }
-    })
-}, {timestamps: true}
+    }), {timestamps: true}
+}
