@@ -2,6 +2,9 @@ const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/type";
 const { Type } = require("../db")
 
+//La funcionalidad de este controlador es traer los tipos de pokemones. Lo primero que va a hacer es ir a buscar en la base de datos, y verificar que la misma exista y tenga algo. Si cumple esas condiciones, me va a devolver el array de objetos que este en ella. Si no cumple las condiciones, lo va a traer de la api, lo guarda en la base de datos, y lo devuelve. Si no encontro coincidencias en ambos lados, me va a arrojar un error. 
+
+
 const getType = async (req, res) => {
     try {
         const type = Type.findAll();

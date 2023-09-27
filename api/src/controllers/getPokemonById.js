@@ -2,6 +2,9 @@ const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/pokemon";
 const { Pokemon } = require("../db");
 
+//La funcionalidad de este controlador es traer pokemones por medio de su id. Entonces, me voy a traer el id con params y voy a verificar si es de tipo UUID. Si es UUID, primero voy a ir a ver si ese pokemon ya existe en mi base de datos, si existe lo voy a devolver. Si no existe, lo voy a traer de la api y lo voy a devolver. Si en el proceso courrio algo, me lanza un error. 
+
+
 const getPokemonById = async (req, res) => {
     try {
         const { id } = req.params;
