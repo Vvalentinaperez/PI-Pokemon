@@ -13,23 +13,27 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        image: { //Imagenes. Estoy guardando una referencia a la imagen que esta guardada en front_default (prop de un objeto mas grande "sprites")
+        image: { 
             type: DataTypes.STRING,
             allowNull: false, 
             unique: true
         },
-        life: { //Recordar que esta prop esta dentro de un objeto llamado stat, el cual esta dentro de un array llamado stats
-            type: DataTypes.STRING, 
+        life: { 
+            type: DataTypes.INTEGER, 
             allowNull: false
         }, 
-        attack: { //Recordar que esta prop esta dentro de un objeto llamado stat, el cual esta dentro de un array llamado stats
-            type: DataTypes.STRING, 
+        attack: { 
+            type: DataTypes.INTEGER, 
             allowNull: false
         },
-        defense: { //Recordar que esta prop esta dentro de un objeto llamado stat, el cual esta dentro de un array llamado stats
-            type: DataTypes.STRING, 
+        defense: { 
+            type: DataTypes.INTEGER, 
             allowNull: false
         }, 
+        speed: {
+            type: DataTypes.INTEGER, 
+            allowNull: false
+        },
         height: {
             type: DataTypes.INTEGER, 
             allowNull: false
