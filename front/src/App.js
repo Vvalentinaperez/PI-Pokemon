@@ -17,16 +17,16 @@ const App = () => {
   const [pokemon, setPokemon] = useState([]);
   const URL = "https://pokeapi.co/api/v2/pokemon"
   
-  const onSearch = async (name) => {
-    try {
-      const endpoint = await axios(`${URL}/${name}`)
-      if(endpoint){
-        setPokemon((oldPoke) => [...oldPoke, endpoint])
-      }
-    } catch (error) {
-      alert("No existen pokemones con ese Name")
-    }
-  }
+  // const onSearch = async (name) => {
+  //   try {
+  //     const endpoint = await axios(`${URL}/${name}`)
+  //     if(endpoint){
+  //       setPokemon((oldPoke) => [...oldPoke, endpoint])
+  //     }
+  //   } catch (error) {
+  //     alert("No existen pokemones con ese Name")
+  //   }
+  // }
 
   return (
     <div className="App">

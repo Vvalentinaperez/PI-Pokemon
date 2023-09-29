@@ -9,6 +9,7 @@ const Cards = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector(state => state.myPokemons);
   const [currentPage, setCurrentPage ] = useState(1); //PAGINACION: Creo un estado para saber en que pagina estoy parado (1 porque empieza en la pagina 1)
+  
   useEffect(() => {
     dispatch(getPokemons())
   }, [])
@@ -19,6 +20,8 @@ const Cards = () => {
   const start = (currentPage - 1) * pokemonsForPage; 
   const end = start + pokemonsForPage; 
   const currentPokemons = pokemons.slice(start, end); 
+
+  console.log(currentPokemons)
 
   const nextPage = () => { //Nos lleva a la pagina siguiente
     setCurrentPage(prevPage => prevPage + 1);
@@ -42,8 +45,8 @@ const Cards = () => {
                   key={poke.id}
                   id={poke.id}
                   name={poke.name}
-                  image={poke.sprites && poke.sprites.other.home.front_default ? poke.sprites.other.home.front_default: "C:\Users\valen\Downloads\imagenes Pokemon\thumb-201718.png" }
-                  type={Array.isArray(poke.types)? poke.types.map(tipo => tipo.type.name) : [poke.types]}
+                  image={poke.image}
+                  type={poke.type}
                   life={poke.life}
                   attack={poke.attack}
                   defense={poke.defense}
