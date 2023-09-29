@@ -8,13 +8,24 @@ const getPokemons = async (_req, res) => {
         const { data } = await axios(`${URL}?limit=50`);
         const results = data.results; 
 
-        let newInfo = results.map((result) => {return {
-            name: result.name,
-            url: result.url
-        }})
+        const detailPokePromises = results.map(async (result) => {
+        const detailResponse = await axios(result.url);
+        const detail = detailResponse.data;
+          return {
+            name: detail.name,
+            image: detail.sprites.other.home.front_default, 
+            type: detail.types[0]?.type?.name
+          }
+        
+        })
+        
+    const detailPoke = await Promise.all(detailPokePromises);
 
+    if(detailPoke){
+        return res.status(200).json(detailPoke)
+    }
 
-        return res.status(200).json(newInfo); //Respuesta
+        
 
     } catch (error) {
         res.status(500).json(error.message)

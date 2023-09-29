@@ -21,10 +21,28 @@ const getPokemonById = async (req, res) => {
       }
 
       const { data } = await axios(`${URL}/${id}`); 
-      res.status(200).json(data);  
+      
+      if(data){
+        const pokeDetail = {
+            name: data.name,
+            image: data.sprites.other.home.front_default, 
+            type: data.types[0]?.type?.name, 
+            life: data.stats.find(vida => vida.stat.name === "hp").base_stat,
+            attack: data.stats.find(ataque => ataque.stat.name === "attack").base_stat,
+            defense: data.stats.find(defensa => defensa.stat.name === "defense").base_stat,
+            speed: data.stats.find(velocidad => velocidad.stat.name === "speed").base_stat,
+            weight: data.weight, 
+            height: data.height
+        }
+        return res.status(200).json(pokeDetail)
+      }else{
+        return res.status(404).send("No se encontro el Pokemon solicitado")
+      }
+
       
        
     } catch (error) {
+      console.log(error.message);
         res.status(500).send("No se encontraron pokemones con ese id");
     }
 }
