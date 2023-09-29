@@ -1,17 +1,29 @@
-// import { useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getPokeByName } from "../../Redux/actions";
 
-// const SearchBar = ({onSearch}) => {
 
-//     const [ name, setName ] = useState("");
 
-//     const handleChange = (event) => {
-//         setName(event.target.value);
-//     }
-//     return (
-//         <div>
-          
-//         </div>
-//     )
-// }
+const SearchBar = () => {
 
-// export default SearchBar;
+    const [ name, setName ] = useState("");
+    const dispatch = useDispatch();
+
+    const handleChange = (event) => {
+        setName(event.target.value);
+    }
+
+    const onSearch = () => {
+        dispatch(getPokeByName(name))
+        console.log("Gio patetico ta")
+    }
+    
+    return (
+        <div>
+           <input type="search" onChange={handleChange} value={name}/>
+           <button onClick={()=> {onSearch()}}>ADD</button>
+        </div>
+    )
+}
+
+export default SearchBar;

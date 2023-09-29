@@ -21,7 +21,7 @@ const Cards = () => {
   const end = start + pokemonsForPage; 
   const currentPokemons = pokemons.slice(start, end); 
 
-  console.log(currentPokemons)
+  
 
   const nextPage = () => { //Nos lleva a la pagina siguiente
     setCurrentPage(prevPage => prevPage + 1);

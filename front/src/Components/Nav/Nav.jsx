@@ -1,9 +1,11 @@
-// const Nav = (onSearch) => {
-//     return(
-//         <div>
-           
-//         </div>
-//     )
-// }
+import SearchBar from "../SearchBar/SearchBar";
 
-// export default Nav; 
+const Nav = () => {
+    return(
+        <div>
+           <SearchBar/>
+        </div>
+    )
+}
+
+export default Nav; 

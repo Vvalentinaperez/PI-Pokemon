@@ -1,4 +1,4 @@
-import {GET_POKEMONS, GET_POKE_DETAIL} from "../Redux/actions-type"
+import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME} from "../Redux/actions-type"
 import axios from "axios";
 const endpoint = "http://localhost:3001"
 
@@ -44,4 +44,27 @@ export const getPokeDetail = (id) => {
             console.log(error.message);
         }
     }
+}
+
+export const cleanDetail = () => {
+    return{
+        type: CLEAN_DETAIL
+    }
+}
+
+export const getPokeByName = (name) => {
+   return async (dispatch) => {
+    try {
+       const { data } = await axios(`${endpoint}/pokemon/name?name=${name}`)
+       console.log(data)
+       return dispatch({
+        type: GET_POKE_BY_NAME, 
+        payload: data
+       })
+
+
+    } catch (error) {
+        console.log(error.message);
+    }
+   }
 }
