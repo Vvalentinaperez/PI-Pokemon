@@ -1,15 +1,15 @@
-import {GET_POKEMONS} from "../Redux/actions-type"
+import {GET_POKEMONS, GET_POKE_DETAIL} from "../Redux/actions-type"
 import axios from "axios";
+const endpoint = "https://pokeapi.co/api/v2/pokemon"
 
 
 
 export const getPokemons = () => {
     return async (dispatch) => {
-
-        const endpoint = "https://pokeapi.co/api/v2/pokemon"
+        
 
         try {
-            const {data} = await axios(endpoint) 
+            const {data} = await axios(`${endpoint}?limit=50`) 
             const response = data.results;
 
             if(!response){
@@ -34,3 +34,22 @@ export const getPokemons = () => {
     }
 }
 
+export const getPokeDetail = (id) => {
+    return async (dispatch) => {
+        try {
+            const {data} = await axios(`${endpoint}/${id}`)
+
+            if(!data){
+                throw Error("No se pudo acceder al detalle del pokemon");
+            }
+
+            return dispatch({
+                type: GET_POKE_DETAIL, 
+                payload: data
+            })
+            
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}

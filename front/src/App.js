@@ -5,10 +5,9 @@ import Cards from './Components/Cards/Cards';
 import Detail from './Components/Detail/Detail';
 import Form from './Components/Form/Form';
 import About from './Components/About/About';
-// import Nav from './Components/Nav/Nav';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
-// import { useLocation } from 'react-router-dom';
+
 
 
 
@@ -33,7 +32,7 @@ const App = () => {
     <div className="App">
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
-        <Route path='/detail/:id' element={<Detail/>}/>
+        <Route path='/home/detail/:id' element={<Detail/>}/>
         <Route path='/home' element={<Cards/>}/>
         <Route path='/home/form' element={<Form/>}/>
         <Route path='/home/about' element={<About/>}/>
