@@ -24,6 +24,7 @@ const getPokemonById = async (req, res) => {
       
       if(data){
         const pokeDetail = {
+            id: data.id,
             name: data.name,
             image: data.sprites.other.home.front_default, 
             type: data.types[0]?.type?.name, 

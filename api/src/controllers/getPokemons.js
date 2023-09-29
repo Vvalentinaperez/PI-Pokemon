@@ -11,21 +11,25 @@ const getPokemons = async (_req, res) => {
         const detailPokePromises = results.map(async (result) => {
         const detailResponse = await axios(result.url);
         const detail = detailResponse.data;
+
+        const typeNames = detail.types.map(typeObj => typeObj.type.name);
+
+        const nameStringType = typeNames.join(" , ");
+        
           return {
+            id: detail.id,
             name: detail.name,
-            image: detail.sprites.other.home.front_default, 
-            type: detail.types[0]?.type?.name
+            image: detail.sprites && detail.sprites.other.home.front_default ? detail.sprites.other.home.front_default: "C:\Users\valen\Downloads\imagenes Pokemon\thumb-201718.png", 
+            type: nameStringType
           }
         
         })
         
-    const detailPoke = await Promise.all(detailPokePromises);
+        const detailPoke = await Promise.all(detailPokePromises);
 
-    if(detailPoke){
-        return res.status(200).json(detailPoke)
-    }
-
-        
+        if(detailPoke){
+          return res.status(200).json(detailPoke)
+        }
 
     } catch (error) {
         res.status(500).json(error.message)
