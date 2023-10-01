@@ -20,7 +20,8 @@ const getPokemons = async (_req, res) => {
             id: detail.id,
             name: detail.name,
             image: detail.sprites && detail.sprites.other.home.front_default ? detail.sprites.other.home.front_default: "C:\Users\valen\Downloads\imagenes Pokemon\thumb-201718.png", 
-            type: nameStringType
+            type: nameStringType, 
+            attack: detail.stats.find(ataque => ataque.stat.name === "attack").base_stat,
           }
         
         })
