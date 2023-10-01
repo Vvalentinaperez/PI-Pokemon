@@ -21,9 +21,7 @@ const Filters = () => {
               <option value="D">DES</option>
               <option value="ALF-ASC">ALF ASC</option>
               <option value="ALF-DES">ALF DES</option>
-              <option value="ASC-ATTCK">ATTACK ASC</option>
-              <option value="DES-ATTCK">ATTACK ASC</option>
-            
+              <option value="ATTACK">ATTACK</option>
           </select>
         </div>
     )
