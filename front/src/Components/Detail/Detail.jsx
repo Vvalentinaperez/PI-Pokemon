@@ -23,15 +23,14 @@ const Detail = () => {
             <div className='detalleImagen'>
               <img src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
             </div>
-           
-            <h1>Name: {pokemonDetail?.name}</h1>
-            <h2>Types: {pokemonDetail?.type}</h2>
-            <h3>Life: {pokemonDetail?.life}</h3>
-            <h3>Attack: {pokemonDetail?.attack}</h3>
-            <h3>Defense: {pokemonDetail?.defense}</h3>
-            <h3>Speed: {pokemonDetail?.speed}</h3>
-            <h3>Weight: {pokemonDetail?.weight}</h3>
-            <h3>Height: {pokemonDetail?.height}</h3>
+              <h1>Name: {pokemonDetail?.name}</h1>
+              <h2>Types: {pokemonDetail?.type}</h2>
+              <h3>Life: {pokemonDetail?.life}</h3>
+              <h3>Attack: {pokemonDetail?.attack}</h3>
+              <h3>Defense: {pokemonDetail?.defense}</h3>
+              <h3>Speed: {pokemonDetail?.speed}</h3>
+              <h3>Weight: {pokemonDetail?.weight}</h3>
+              <h3>Height: {pokemonDetail?.height}</h3>
           </div>
           
         </div>

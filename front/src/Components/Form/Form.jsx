@@ -25,18 +25,17 @@ const Form = () => {
 
   const sendPokemons = async (event) => {
     event.preventDefault()
-    const pokemon = {...pokemons}
     try {
       // Usar axios directamente
-      const response = await axios.post(`http://localhost:3001/pokemon`, pokemon);
+      const response = await axios.post(`http://localhost:3001/pokemon`, {...pokemons});
 
       if (response.data && response.data.id) {
-          navigate(`/detail/${response.data.id}`);
+          navigate(`/home/detail/${response.data.id}`);
       } else {
-          console.error("El servidor no proporcionó un ID para el Pokémon creado.");
+          console.log("El servidor no proporcionó un ID para el Pokémon creado.");
       }
   } catch (error) {
-      console.error("Error al crear Pokémon:", error);
+      console.log("Error al crear Pokémon:", error);
   }
   } 
 
