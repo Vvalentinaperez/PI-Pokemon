@@ -1,4 +1,4 @@
-import { GET_POKEMONS, GET_POKE_DETAIL, CLEAN_DETAIL, GET_POKE_BY_NAME } from "./actions-type";
+import { GET_POKEMONS, GET_POKE_DETAIL, CLEAN_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE} from "./actions-type";
 
 const initialState = {
     myPokemons : [],
@@ -28,6 +28,22 @@ const reducer = (state = initialState, {type, payload}) => {
             ...state, 
             myPokemons: payload
           }
+        case ORDER_POKE: 
+          return {
+            ...state, 
+            myPokemons: payload
+          }
+        case ORDER_BY_ORIGIN:
+          return {
+            ...state, 
+            myPokemons: payload
+          }
+        case CREATE_POKE: 
+          return {
+            ...state, 
+            myPokemons: [payload, ...state.myPokemons]
+          }
+       
         
         default:
            return {... state }

@@ -54,7 +54,7 @@ const Form = () => {
             <input type="text" name="name" onChange={handleChange}/>
           <hr/>
             <label htmlFor="image">IMAGE: </label>
-            <input type="file" name="image" accept="image/*" onChange={handleChange} />
+            <input type="text" name="image" accept="image/*" onChange={handleChange} />
           <hr/>
             <label htmlFor="types">TYPES: </label>
             <input type="text" name="types" onChange={handleChange} />

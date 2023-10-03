@@ -15,9 +15,10 @@ const getPokemonById = async (req, res) => {
           ) 
 
           if(pokemon){
-            res.status(202).json(pokemon);
+            res.status(201).json(pokemon);
+            return
           }
-        console.log(typeof id === UUID);
+       
 
         // console.log(pokemon)
         

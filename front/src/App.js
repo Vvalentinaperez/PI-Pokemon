@@ -10,8 +10,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 
 
-
-
 const App = () => {
   
   const location = useLocation();
@@ -40,18 +38,6 @@ export default App;
 
 
 
-// const [pokemon, setPokemon] = useState([]);
-// const URL = "https://pokeapi.co/api/v2/pokemon"
 
-// const onSearch = async (name) => {
-//   try {
-//     const endpoint = await axios(`${URL}/${name}`)
-//     if(endpoint){
-//       setPokemon((oldPoke) => [...oldPoke, endpoint])
-//     }
-//   } catch (error) {
-//     alert("No existen pokemones con ese Name")
-//   }
-// }
 
 

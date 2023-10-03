@@ -1,5 +1,6 @@
-import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME} from "../Redux/actions-type"
+import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE} from "../Redux/actions-type"
 import axios from "axios";
+
 const endpoint = "http://localhost:3001"
 
 
@@ -29,7 +30,7 @@ export const getPokeDetail = (id) => {
     return async (dispatch) => {
         try {
             // console.log(id);
-            const {data} = await axios(`${endpoint}/pokemon/${id}`)
+            const { data } = await axios.get(`${endpoint}/pokemon/${id}`)
 
             if(!data){
                 throw Error("No se pudo acceder al detalle del pokemon");
@@ -57,6 +58,7 @@ export const getPokeByName = (name) => {
     try {
        const { data } = await axios(`${endpoint}/pokemon/name?name=${name}`)
        console.log(data)
+
        return dispatch({
         type: GET_POKE_BY_NAME, 
         payload: data
@@ -68,3 +70,53 @@ export const getPokeByName = (name) => {
     }
    }
 }
+
+export const orderPokes = (orderType, pokemons) =>{
+    try {
+        const orderPoke = [...pokemons]
+        //Ordena los pokemones de forma asc y desc
+       if(orderType === "A"){ orderPoke.sort((a, b) => a.id - b.id)}
+       if(orderType === "D"){orderPoke.sort((a, b) => b.id - a.id)} 
+       //Ordena los pokemones alfabeticamente asc y desc
+       if(orderType === "ALF-ASC"){orderPoke.sort((a, b) => a.name.localeCompare(b.name))}
+       if(orderType === "ALF-DES"){orderPoke.sort((a, b) => b.name.localeCompare(a.name))}
+       //Ordena los pokemones por el attaque asc
+       if(orderType === "ATTACK"){ orderPoke.sort((a, b) => a.attack - b.attack)}
+    
+        return {type: ORDER_POKE, payload: orderPoke }
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+    
+}
+
+export const orderByOrigin = (originOrder, pokemons) =>  {
+    try {
+        let byOriginPoke = [...pokemons];
+    
+        if(originOrder === "BDD"){
+            byOriginPoke = byOriginPoke.filter(pokemon => typeof pokemon.id !== "number");
+        }else if(originOrder === "API"){
+          byOriginPoke =  byOriginPoke.filter(pokemon => typeof pokemon.id === "number");
+        }
+        return {type: ORDER_BY_ORIGIN, payload: byOriginPoke }
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const createPoke = async (pokemons) => {
+  return async (dispatch) => {
+    try {
+        console.log(pokemons);
+        const response =  await axios.post(`${endpoint}/pokemon`, {...pokemons});
+        console.log("TODO OK");
+        
+        return dispatch({type: CREATE_POKE, payload: response})
+
+    } catch (error) {
+        console.log(error.message);
+    }
+  }}
