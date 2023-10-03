@@ -14,13 +14,13 @@ const getPokemons = async (_req, res) => {
 
         const typeNames = detail.types.map(typeObj => typeObj.type.name);
 
-        const nameStringType = typeNames.join(" , ");
+        
         
           return {
             id: detail.id,
             name: detail.name,
             image: detail.sprites && detail.sprites.other.home.front_default ? detail.sprites.other.home.front_default: "C:\Users\valen\Downloads\imagenes Pokemon\thumb-201718.png", 
-            type: nameStringType, 
+            type: typeNames, 
             attack: detail.stats.find(ataque => ataque.stat.name === "attack").base_stat,
             weight: data.weight, 
             height: data.height

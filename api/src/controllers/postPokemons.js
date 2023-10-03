@@ -31,7 +31,7 @@ const postPokemons = async (req, res) => {
         });
 
 
-        const typeName = types.map(element => element); 
+        const typeName = types
 
         if(typeName.length){
             const name = typeName

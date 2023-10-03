@@ -17,7 +17,20 @@ const getPokemonById = async (req, res) => {
 
       if(isUUID){
         const pokemon = await Pokemon.findOne({where: {id}});
-        res.status(200).json(pokemon);
+        
+        const pokeDetail = {
+          id: pokemon.id,
+          name: pokemon.name,
+          image: pokemon.sprites.other.home.front_default, 
+          type: pokemon.types[0]?.type?.name, 
+          life: pokemon.stats.find(vida => vida.stat.name === "hp").base_stat,
+          attack: pokemon.stats.find(ataque => ataque.stat.name === "attack").base_stat,
+          defense: pokemon.stats.find(defensa => defensa.stat.name === "defense").base_stat,
+          speed: pokemon.stats.find(velocidad => velocidad.stat.name === "speed").base_stat,
+          weight: pokemon.weight, 
+          height: pokemon.height
+      }
+        res.status(200).json(pokeDetail);
       }
 
       const { data } = await axios(`${URL}/${id}`); 
