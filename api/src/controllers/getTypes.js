@@ -7,7 +7,7 @@ const { Type } = require("../db")
 
 const getType = async (req, res) => {
     try {
-        const type = Type.findAll();
+        const type = await Type.findAll();
         
         if(type && type.length > 0){
             return res.status(200).json(type);
@@ -16,12 +16,17 @@ const getType = async (req, res) => {
         const response = await axios(URL);
         const respType = response.data.results;
 
-        const saveType = await Type.bulkCreate(respType);
+        const typeName = respType.map(resp => ({ name: resp.name }))
+
+        console.log(typeName)
+
+        const saveType = await Type.bulkCreate(typeName);
 
         res.status(200).json(saveType);
 
 
     } catch (error) {
+        console.log(error.message)
         res.status(500).json("No existen pokemones de ese tipo");
     }
 }
