@@ -21,7 +21,7 @@ const Detail = () => {
         <div >
           <div className='detallePoke'>
             <div className='detalleImagen'>
-              <img src={pokemonDetail.image} alt={pokemonDetail.name}/> 
+              <img src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
             </div>
            
             <h1>Name: {pokemonDetail?.name}</h1>
@@ -39,3 +39,5 @@ const Detail = () => {
 }
 
 export default Detail;
+
+

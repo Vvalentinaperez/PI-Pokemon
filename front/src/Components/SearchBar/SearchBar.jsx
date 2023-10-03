@@ -15,7 +15,6 @@ const SearchBar = () => {
 
     const onSearch = () => {
         dispatch(getPokeByName(name))
-        console.log("Gio patetico ta")
     }
     
     return (

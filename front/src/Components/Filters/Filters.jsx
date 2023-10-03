@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { orderPokes } from "../../Redux/actions";
+import { orderByOrigin, orderPokes } from "../../Redux/actions";
 
 
 
@@ -11,8 +11,11 @@ const Filters = () => {
         const orderType = event.target.value;
         dispatch(orderPokes(orderType, pokemons))
     }
-    //orderType: son los tipos de ordenamiento
-    //pokemons: mis pokemones del estado global
+    
+    const handleChangeOrigin = (event) => {
+        const originOrder = event.target.value;
+        dispatch(orderByOrigin(originOrder, pokemons))
+    }
 
     return (
         <div>
@@ -22,6 +25,10 @@ const Filters = () => {
               <option value="ALF-ASC">ALF ASC</option>
               <option value="ALF-DES">ALF DES</option>
               <option value="ATTACK">ATTACK</option>
+          </select>
+          <select onChange={handleChangeOrigin}>
+              <option value="API">API</option>
+              <option value="BDD">BDD</option>
           </select>
         </div>
     )
