@@ -9,37 +9,23 @@ const {UUID, where} = require("sequelize");
 const getPokemonById = async (req, res) => {
     try {
         const { id } = req.params;
-        if(id){
-          const pokemon = await Pokemon.findOne(
-            {where: { id: id}}
-          ) 
+        const isUUID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id);
 
-          if(pokemon){
-            res.status(201).json(pokemon);
-            return
-          }
-       
+        let pokemon 
 
-        // console.log(pokemon)
-        
-        // const pokeDetail = {
-        //   id: pokemon.id,
-        //   name: pokemon.name,
-        //   image: pokemon.sprites.other.home.front_default, 
-        //   type: pokemon.types[0]?.type?.name, 
-        //   life: pokemon.stats.find(vida => vida.stat.name === "hp").base_stat,
-        //   attack: pokemon.stats.find(ataque => ataque.stat.name === "attack").base_stat,
-        //   defense: pokemon.stats.find(defensa => defensa.stat.name === "defense").base_stat,
-        //   speed: pokemon.stats.find(velocidad => velocidad.stat.name === "speed").base_stat,
-        //   weight: pokemon.weight, 
-        //   height: pokemon.height
-      // }
+        if(isUUID){
+          console.log("aqui")
+           pokemon = await Pokemon.findOne(
+            {where: {id}}
+          )
+          pokemon = {...pokemon.toJSON()}
       }
 
+      if(!pokemon){
       const { data } = await axios(`${URL}/${id}`); 
       
-      if(data){
-        const pokeDetail = {
+      if(!data){return res.status(204).json("No se encontro el Pokemon solicitado")}
+        pokemon = {
             id: data.id,
             name: data.name,
             image: data.sprites.other.home.front_default, 
@@ -51,10 +37,10 @@ const getPokemonById = async (req, res) => {
             weight: data.weight, 
             height: data.height
         }
-        return res.status(201).json(pokeDetail)
-      }else{
-        return res.status(204).json("No se encontro el Pokemon solicitado")
       }
+      return res.status(201).json(pokemon)
+        
+    
 
     } catch (error) {
       console.log(error.message);
