@@ -1,10 +1,15 @@
 const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/pokemon"
+const {Pokemon} = require("../db");
 
-//Aca lo que voy a hacer es una peticion a mi API de 50 pokemones. Por lo tanto, hago la peticion me quedo solo con el array de objetos. El cual voy a recorrer para que me tire el nombre del pokemon, con su url en la cual se encuentra el detalle del mismo. Si la peticion sale bien devuelvo el array de objetos, y si no lanzo un error. 
+//Aca lo que hacemos es recuperar todos los Pokemones de la base de datos, y a cada uno de ellos le estoy añadiendo una propiedad "origin" con valor "BDD" (eso para los filtros), Hago lo mismo de la API externa y a cada uno de ellos le agrego la propiedad origin con valor "API". Finalmente, combino ambas listas y las devuelvo. 
 
 const getPokemons = async (_req, res) => {
     try {
+
+      const pokeBdd = await Pokemon.findAll();
+      pokeBdd.forEach(pokemon => pokemon.dataValues.origin = 'BDD');
+
         const { data } = await axios(`${URL}?limit=60`);
         const results = data.results; 
 
@@ -29,11 +34,11 @@ const getPokemons = async (_req, res) => {
         })
         
         const detailPoke = await Promise.all(detailPokePromises);
+        detailPoke.forEach(pokemon => pokemon.origin = 'API');
+        const allPokemons = [...pokeBdd, ...detailPoke];
 
-        if(detailPoke){
-          return res.status(200).json(detailPoke)
-        }
-
+        return res.status(200).json(allPokemons);
+    
     } catch (error) {
         res.status(500).json(error.message)
     }
