@@ -21,22 +21,27 @@ const Cards = () => {
   const end = start + pokemonsForPage; 
   const currentPokemons = pokemons.slice(start, end); 
 
-  
+  const totalPages = Math.ceil(pokemons.length / pokemonsForPage); //Divide la cant total de pokes entre la cantidad de pokes por pagina para determinar cuantas paginas necesitaras en total. El math ceil redondea hacia arriba, asegurando que haya suficientes paginas incluso si hay un residuo. 
 
-  const nextPage = () => { //Nos lleva a la pagina siguiente
-    setCurrentPage(prevPage => prevPage + 1);
+  //currentPage: pagina en la que me encuentro
+
+  const nextPage = () => {
+    if(currentPage < totalPages){//Verifica si la pagina en la que me encunetro (currentPage) es menor que el total de paginas. Es decir, verifica si no estoy en la ultima pagina
+      setCurrentPage(currentPage + 1)} //Si eso se cumple, aumenta de pagina
   }
 
-  const prevPage = () => { //Nos lleva a la pagina anterior
-    setCurrentPage(prevPage => prevPage - 1);
+  const prevPage = () => { 
+    if(currentPage > 1){
+      setCurrentPage(currentPage - 1)}
   }
 
 
     return (
       <div>
           <h1>HOME</h1>
-              <button onClick={nextPage} disabled={currentPage === Math.ceil(pokemons.length / pokemonsForPage)}>NEXT PAGE</button>
-              <button onClick={prevPage}>PREV PAGE</button>
+          <button onClick={prevPage} disabled={currentPage === 1}>PREV PAGE</button>
+      <span> Page {currentPage} / {totalPages} </span>
+      <button onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
         <div className="cards-wrapper">
           {
             currentPokemons.map(poke => {

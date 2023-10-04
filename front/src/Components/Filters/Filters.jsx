@@ -4,7 +4,11 @@ import { orderByOrigin, orderPokes } from "../../Redux/actions";
 
 
 const Filters = () => {
+    //Esta es la lista completa de Pokemones
     const pokemons = useSelector(state => state.myPokemons)
+    //Esta es la lista que se mostrara para los filtros
+    const pokemonsCopy = useSelector(state => state.copyPokemons)
+
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
@@ -14,7 +18,7 @@ const Filters = () => {
     
     const handleChangeOrigin = (event) => {
         const originOrder = event.target.value;
-        dispatch(orderByOrigin(originOrder, pokemons))
+        dispatch(orderByOrigin(originOrder, pokemonsCopy))
     }
 
     return (
