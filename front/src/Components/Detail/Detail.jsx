@@ -8,7 +8,7 @@ const Detail = () => {
   const {id} = useParams();
   const dispatch = useDispatch()
   const pokemonDetail = useSelector(state => state.pokeDetail)
-  
+  console.log(pokemonDetail)
   
   useEffect(() => {
     dispatch(getPokeDetail(id))
@@ -21,7 +21,7 @@ const Detail = () => {
         <div >
           <div className='detallePoke'>
             <div className='detalleImagen'>
-              <img id={pokemonDetail.id} src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
+              <img id={pokemonDetail?.id} src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
             </div>
               <h1>Name: {pokemonDetail?.name}</h1>
               <h2>Types: {pokemonDetail?.type}</h2>
