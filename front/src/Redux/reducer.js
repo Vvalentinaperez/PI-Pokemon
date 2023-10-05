@@ -37,9 +37,8 @@ const reducer = (state = initialState, {type, payload}) => {
           }
         case ORDER_BY_ORIGIN:
           return {
-            ...state, 
-            // myPokemons: [payload, ...state.myPokemons], 
-            copyPokemons: [payload, ...state.myPokemons]
+            ...state,
+            myPokemons: payload
           }
         case CREATE_POKE: 
           return {

@@ -91,11 +91,21 @@ export const orderPokes = (orderType, pokemons) =>{
     }
     
 }
-//Usamos el metodo filter directo sobre el array "pokemons" para filtrar los pokemones segun su origen (API o BDD) y devolvemos.
+
 export const orderByOrigin = (originOrder, pokemons) =>  {
     try {
-        let byOriginPoke = pokemons.filter(pokemon => pokemon.origin === originOrder );
+        let byOriginPoke;
+
+        if(originOrder === "API"){
+            byOriginPoke = pokemons.filter(pokemon => typeof pokemon.id === "number");
+        }else if(originOrder === "BDD"){
+            byOriginPoke = pokemons.filter(pokemon => typeof pokemon.id === "string");
+        }
+        console.log(byOriginPoke)
+
+
         return {type: ORDER_BY_ORIGIN, payload: byOriginPoke }
+
         
     } catch (error) {
         console.log(error.message)
