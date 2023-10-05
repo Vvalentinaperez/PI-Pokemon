@@ -41,8 +41,8 @@ const Cards = () => {
       <div>
           <h1>HOME</h1>
           <button onClick={prevPage} disabled={currentPage === 1}>PREV PAGE</button>
-      <span> Page {currentPage} / {totalPages} </span>
-      <button onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
+          <span> Page {currentPage} / {totalPages} </span>
+          <button onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
         <div className="cards-wrapper">
           {
             currentPokemons.map(poke => {

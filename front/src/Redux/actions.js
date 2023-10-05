@@ -1,4 +1,4 @@
-import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE} from "../Redux/actions-type"
+import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE, GET_TYPE} from "../Redux/actions-type"
 import axios from "axios";
 
 const endpoint = "http://localhost:3001"
@@ -112,12 +112,10 @@ export const orderByOrigin = (originOrder, pokemons) =>  {
     }
 }
 
-export const createPoke = async (pokemons) => {
+export const createPoke =  (pokemons) => {
   return async (dispatch) => {
     try {
-        console.log(pokemons);
         const response =  await axios.post(`${endpoint}/pokemon`, {...pokemons});
-        console.log("TODO OK");
         
         return dispatch({type: CREATE_POKE, payload: response})
 
@@ -125,3 +123,16 @@ export const createPoke = async (pokemons) => {
         console.log(error.message);
     }
   }}
+
+
+export const getTypes =  () => {
+    return async (dispatch) => {
+        try {
+            const {data} = await axios(`${endpoint}/type`);
+            return dispatch({type: GET_TYPE, payload: data})
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}

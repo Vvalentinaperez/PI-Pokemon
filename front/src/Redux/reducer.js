@@ -1,9 +1,11 @@
-import { GET_POKEMONS, GET_POKE_DETAIL, CLEAN_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE} from "./actions-type";
+import { GET_POKEMONS, GET_POKE_DETAIL, CLEAN_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE, GET_TYPE} from "./actions-type";
 
+//Duda: en que momento poner un array y en que momento poner un objeto? 
 const initialState = {
     myPokemons : [],
     copyPokemons: [],
-    pokeDetail : {}
+    pokeDetail : {}, 
+    myTypes: []
 }
 
 
@@ -28,7 +30,7 @@ const reducer = (state = initialState, {type, payload}) => {
         case GET_POKE_BY_NAME: 
           return {
             ...state, 
-            copyPokemons: payload
+            myPokemons: payload
           }
         case ORDER_POKE: 
           return {
@@ -46,7 +48,11 @@ const reducer = (state = initialState, {type, payload}) => {
             myPokemons: [payload, ...state.myPokemons], 
             copyPokemons: [payload, ...state.myPokemons]
           }
-       
+        case GET_TYPE: 
+          return {
+            ...state, 
+            myTypes: payload
+          }
         
         default:
            return {... state }

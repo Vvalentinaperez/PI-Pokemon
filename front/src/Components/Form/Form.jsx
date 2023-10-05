@@ -1,20 +1,30 @@
 import validation from "../Validation/validation";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { getTypes } from "../../Redux/actions";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector} from "react-redux";
 
 
+//Duda: cuando es necesario poner algo en el array de dependencias y cuando no
 
 
 const Form = () => {
 
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
+  const type = useSelector(state => state.myTypes);
+
+ 
+  useEffect(() => {
+    dispatch(getTypes())
+  }, [dispatch])
+
 
   const [ pokemons, setPokemons ] = useState({
     name: "",
     image: "", 
-    types: "",
+    types: [],
     life: 0, 
     attack: 0, 
     defense: 0, 
@@ -61,8 +71,23 @@ const Form = () => {
       ...pokemons, 
       [event.target.name] : event.target.value
     }))
+  }
+
+  const handleChangeType = (event) => {
+    const tpName = event.target.value;
+    const isChecked = event.target.checked;
+
+    let updateTypes;
+
+    if(isChecked){
+      updateTypes = [...pokemons.types, tpName];
+    }else{
+      updateTypes = pokemons.types.filter((tps) => tps !== tpName);
+    }
+
+    setPokemons({...pokemons, types: updateTypes});
+    console.log(pokemons);
     
-  
   }
 
     return (
@@ -73,8 +98,24 @@ const Form = () => {
             <label htmlFor="image">Image: </label>
             <input type="text" name="image" accept="image/*" placeholder="Image" value={pokemons.image} onChange={handleChange} /> {error?.image && <p style={{color: "red"}}>{error.image}</p>}
           <hr/>
-            <label htmlFor="types">Types: </label>
-            <input type="text" name="types" placeholder="Types" value={pokemons.types} onChange={handleChange} />{error.types && <p style={{color: "red"}}>{error.types}</p>}
+            <>
+              <label htmlFor="types">Types: </label>
+              {
+                type.map(pk => {
+                  return (
+                    <div key={pk.id}>
+                      <input
+                        type="checkbox" 
+                        value={pk.name}
+                        checked={pokemons.types.includes(pk.name)} 
+                        onChange={handleChangeType}
+                      />
+                      <span name={pk.name}>{pk.name}</span>
+                    </div>
+                  )
+                } )
+              }
+            </>
           <hr/>
             <label htmlFor="life">Life: </label>
             <input type="number" name="life" min="0" max="200"value={pokemons.life} onChange={handleChange}/>{error.life && <p style={{color: "red"}}>{error.life}</p>}
@@ -103,3 +144,5 @@ const Form = () => {
 export default Form; 
 
 
+// <label htmlFor="types">Types: </label>
+// <input type="text" name="types" placeholder="Types" value={pokemons.types} onChange={handleChange} />{error.types && <p style={{color: "red"}}>{error.types}</p>}
