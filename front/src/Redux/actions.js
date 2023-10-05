@@ -31,7 +31,7 @@ export const getPokeDetail = (id) => {
         try {
             // console.log(id);
             const { data } = await axios.get(`${endpoint}/pokemon/${id}`)
-
+            console.log(data);
             if(!data){
                 throw Error("No se pudo acceder al detalle del pokemon");
             }
@@ -58,6 +58,7 @@ export const getPokeByName = (name) => {
     try {
        const { data } = await axios(`${endpoint}/pokemon/name?name=${name}`)
        console.log(data)
+
 
        return dispatch({
         type: GET_POKE_BY_NAME, 
@@ -90,16 +91,10 @@ export const orderPokes = (orderType, pokemons) =>{
     }
     
 }
-
+//Usamos el metodo filter directo sobre el array "pokemons" para filtrar los pokemones segun su origen (API o BDD) y devolvemos.
 export const orderByOrigin = (originOrder, pokemons) =>  {
     try {
-        let byOriginPoke = [...pokemons];
-    
-        if(originOrder === "BDD"){
-            byOriginPoke = byOriginPoke.filter(pokemon => typeof pokemon.id !== "number");
-        }else if(originOrder === "API"){
-          byOriginPoke =  byOriginPoke.filter(pokemon => typeof pokemon.id === "number");
-        }
+        let byOriginPoke = pokemons.filter(pokemon => pokemon.origin === originOrder );
         return {type: ORDER_BY_ORIGIN, payload: byOriginPoke }
         
     } catch (error) {

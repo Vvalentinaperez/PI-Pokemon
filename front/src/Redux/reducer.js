@@ -2,6 +2,7 @@ import { GET_POKEMONS, GET_POKE_DETAIL, CLEAN_DETAIL, GET_POKE_BY_NAME, ORDER_PO
 
 const initialState = {
     myPokemons : [],
+    copyPokemons: [],
     pokeDetail : {}
 }
 
@@ -11,7 +12,8 @@ const reducer = (state = initialState, {type, payload}) => {
         case GET_POKEMONS:
             return {
                 ...state, 
-                myPokemons : payload
+                myPokemons : payload, 
+                copyPokemons: payload
             }
         case GET_POKE_DETAIL:
             return {
@@ -26,7 +28,7 @@ const reducer = (state = initialState, {type, payload}) => {
         case GET_POKE_BY_NAME: 
           return {
             ...state, 
-            myPokemons: payload
+            copyPokemons: payload
           }
         case ORDER_POKE: 
           return {
@@ -36,12 +38,14 @@ const reducer = (state = initialState, {type, payload}) => {
         case ORDER_BY_ORIGIN:
           return {
             ...state, 
-            myPokemons: payload
+            // myPokemons: [payload, ...state.myPokemons], 
+            copyPokemons: [payload, ...state.myPokemons]
           }
         case CREATE_POKE: 
           return {
             ...state, 
-            myPokemons: [payload, ...state.myPokemons]
+            myPokemons: [payload, ...state.myPokemons], 
+            copyPokemons: [payload, ...state.myPokemons]
           }
        
         
