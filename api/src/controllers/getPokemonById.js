@@ -14,7 +14,6 @@ const getPokemonById = async (req, res) => {
         let pokemon 
 
         if(isUUID){
-          console.log("aqui")
            pokemon = await Pokemon.findOne(
             {where: {id}}
           )

@@ -7,21 +7,20 @@ const { Pokemon } = require("../db");
 const getPokemonByName = async (req, res) => {
     try {
         const { name } = req.query
+        const nameMayus = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         
-        const pokeByName = await Pokemon.findOne({
-            where: {name}
+        let pokeByName
+        pokeByName = await Pokemon.findOne({
+            where: {name: nameMayus}
         })
 
         if(pokeByName){
-            res.status(200).json(pokeByName);
+           return res.status(200).json([pokeByName]);
         }
 
-        const nameMayus = name.toLowerCase();
-
-        const { data } = await axios(`${URL}/${nameMayus}`)
-        
-        if(data){
-            const pokeDetail =[ {
+        const { data } = await axios(`${URL}/${nameMayus.toLowerCase()}`);
+            
+        pokeByName =[ {
                 id: data.id,
                 name: data.name,
                 image: data.sprites.other.home.front_default, 
@@ -33,9 +32,8 @@ const getPokemonByName = async (req, res) => {
                 weight: data.weight, 
                 height: data.height
             }]
-            return res.status(200).json(pokeDetail)
-
-        }
+            
+        return res.status(200).json(pokeByName)    
     } catch (error) {
         res.status(500).json(error.message);
     }

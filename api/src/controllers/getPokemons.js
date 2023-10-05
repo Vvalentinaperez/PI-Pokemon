@@ -8,9 +8,9 @@ const getPokemons = async (_req, res) => {
     try {
 
       const pokeBdd = await Pokemon.findAll();
-      pokeBdd.forEach(pokemon => pokemon.dataValues.origin = 'BDD');
+     
 
-        const { data } = await axios(`${URL}?limit=50`);
+        const { data } = await axios(`${URL}?limit=48`)
         const results = data.results; 
 
         const detailPokePromises = results.map(async (result) => {
@@ -34,7 +34,7 @@ const getPokemons = async (_req, res) => {
         })
         
         const detailPoke = await Promise.all(detailPokePromises);
-        detailPoke.forEach(pokemon => pokemon.origin = 'API');
+        
         const allPokemons = [...pokeBdd, ...detailPoke];
 
         return res.status(200).json(allPokemons);
