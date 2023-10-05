@@ -24,7 +24,7 @@ const Detail = () => {
               <img id={pokemonDetail?.id} src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
             </div>
               <h1>Name: {pokemonDetail?.name}</h1>
-              <h2>Types: {pokemonDetail?.types}</h2>
+              <h2>Types: {Array.isArray(pokemonDetail?.types) ? pokemonDetail?.types.join(' ') : pokemonDetail?.types}</h2>
               <h3>Life: {pokemonDetail?.life}</h3>
               <h3>Attack: {pokemonDetail?.attack}</h3>
               <h3>Defense: {pokemonDetail?.defense}</h3>
