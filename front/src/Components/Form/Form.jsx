@@ -33,7 +33,7 @@ const Form = () => {
     weight: 0, 
   })
 
-  const [error, setErorr] = useState({
+  const [error, setError] = useState({
     name: "", 
     image: "",
     types: "",
@@ -67,7 +67,7 @@ const Form = () => {
       ...pokemons, 
       [event.target.name] : event.target.value
     })
-    setErorr(validation({
+    setError(validation({
       ...pokemons, 
       [event.target.name] : event.target.value
     }))
@@ -87,7 +87,19 @@ const Form = () => {
 
     setPokemons({...pokemons, types: updateTypes});
     console.log(pokemons);
-    
+
+    const handleType = updateTypes.length <= 0;
+    if(handleType){
+      setError((error) => ({
+        ...error, 
+        types: "Por favor selecciona al menos un genero"
+      }));
+    }else{
+      setError((error) => ({
+        ...error, 
+        types: ""
+      }))
+    }
   }
 
     return (
@@ -115,7 +127,7 @@ const Form = () => {
                   )
                 } )
               }
-            </>
+            </>{error.types && <p style={{color: "red"}}>{error.types}</p>}
           <hr/>
             <label htmlFor="life">Life: </label>
             <input type="number" name="life" min="0" max="200"value={pokemons.life} onChange={handleChange}/>{error.life && <p style={{color: "red"}}>{error.life}</p>}

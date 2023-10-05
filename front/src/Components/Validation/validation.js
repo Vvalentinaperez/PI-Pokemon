@@ -14,11 +14,7 @@ const validation = (pokemons) => {
     error.image = "";
   }
 
-  if(!pokemons.types){
-    error.types = "Debe ingresar por lo menos un tipo";
-  }else{
-    error.types = "";
-  }
+
 
   if(pokemons.life === 0){
     error.life = "Debe ingresar un numero de vida";
