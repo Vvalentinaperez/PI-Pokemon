@@ -9,8 +9,15 @@ const getType = async (req, res) => {
     try {
         const type = await Type.findAll();
         
+
         if(type && type.length > 0){
-            return res.status(200).json(type);
+            const types = type.map(tp =>  {
+                return {
+                id: tp.id,
+                name: tp.name
+            }
+            } )
+            return res.status(200).json(types);
         }
         
         const response = await axios(URL);
@@ -18,12 +25,17 @@ const getType = async (req, res) => {
 
         const typeName = respType.map(resp => ({ name: resp.name }))
 
-        console.log(typeName)
-
+    
         const saveType = await Type.bulkCreate(typeName);
 
-        res.status(200).json(saveType);
 
+        const typesName = saveType.map(tp =>  {
+            return {
+                id: tp.id,
+                name: tp.name
+            }
+        })
+        res.status(200).json(typesName);
 
     } catch (error) {
         console.log(error.message)

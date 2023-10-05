@@ -1,6 +1,6 @@
 const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/pokemon";
-const { Pokemon } = require("../db");
+const { Pokemon, Type} = require("../db");
 const {UUID, where} = require("sequelize");
 
 //La funcionalidad de este controlador es traer pokemones por medio de su id. Entonces, me voy a traer el id con params y voy a verificar si es de tipo UUID. Si es UUID, primero voy a ir a ver si ese pokemon ya existe en mi base de datos, si existe lo voy a devolver. Si no existe, lo voy a traer de la api y lo voy a devolver. Si en el proceso courrio algo, me lanza un error. 
@@ -15,9 +15,12 @@ const getPokemonById = async (req, res) => {
 
         if(isUUID){
            pokemon = await Pokemon.findOne(
-            {where: {id}}
+            {where: {id}, 
+            include: {model: Type, attributes: ["name"] }
+          }
           )
-          pokemon = {...pokemon.toJSON()}
+          const types = pokemon.types.map(type => type.name)
+          pokemon = {...pokemon.toJSON(), types}
       }
 
       if(!pokemon){
@@ -28,7 +31,7 @@ const getPokemonById = async (req, res) => {
             id: data.id,
             name: data.name,
             image: data.sprites.other.home.front_default, 
-            type: data.types[0]?.type?.name, 
+            types: data.types.map(tp => tp.type.name),
             life: data.stats.find(vida => vida.stat.name === "hp").base_stat,
             attack: data.stats.find(ataque => ataque.stat.name === "attack").base_stat,
             defense: data.stats.find(defensa => defensa.stat.name === "defense").base_stat,
