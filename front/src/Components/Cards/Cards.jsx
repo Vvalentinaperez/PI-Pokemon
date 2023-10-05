@@ -8,6 +8,7 @@ import { useState } from "react"
 const Cards = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector(state => state.myPokemons);
+  console.log(pokemons)
   const [currentPage, setCurrentPage ] = useState(1); //PAGINACION: Creo un estado para saber en que pagina estoy parado (1 porque empieza en la pagina 1)
   
   useEffect(() => {
@@ -19,7 +20,7 @@ const Cards = () => {
   const pokemonsForPage = 12;
   const start = (currentPage - 1) * pokemonsForPage; 
   const end = start + pokemonsForPage; 
-  const currentPokemons = pokemons.slice(start, end); 
+  const currentPokemons = pokemons?.slice(start, end); 
 
   const totalPages = Math.ceil(pokemons.length / pokemonsForPage); //Divide la cant total de pokes entre la cantidad de pokes por pagina para determinar cuantas paginas necesitaras en total. El math ceil redondea hacia arriba, asegurando que haya suficientes paginas incluso si hay un residuo. 
 
