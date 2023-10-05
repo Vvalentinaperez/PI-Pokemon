@@ -14,6 +14,7 @@ const Filters = () => {
     const handleChange = (event) => {
         const orderType = event.target.value;
         dispatch(orderPokes(orderType, pokemons))
+        console.log(orderPokes)
     }
     
     const handleChangeOrigin = (event) => {
