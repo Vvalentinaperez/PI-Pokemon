@@ -10,7 +10,7 @@ const getPokemons = async (_req, res) => {
       const pokeBdd = await Pokemon.findAll();
       pokeBdd.forEach(pokemon => pokemon.dataValues.origin = 'BDD');
 
-        const { data } = await axios(`${URL}?limit=60`);
+        const { data } = await axios(`${URL}?limit=50`);
         const results = data.results; 
 
         const detailPokePromises = results.map(async (result) => {
@@ -28,7 +28,7 @@ const getPokemons = async (_req, res) => {
             type: typeNames, 
             attack: detail.stats.find(ataque => ataque.stat.name === "attack").base_stat,
             weight: data.weight, 
-            height: data.height
+            height: data.height,
           }
         
         })
