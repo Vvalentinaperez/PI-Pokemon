@@ -15,7 +15,6 @@ const validation = (pokemons) => {
   }
 
 
-
   if(pokemons.life === 0){
     error.life = "Debe ingresar un numero de vida";
   }else{

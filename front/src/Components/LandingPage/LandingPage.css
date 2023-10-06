@@ -1,0 +1,11 @@
+body {
+    background-image: url("../util/fondo.jpg");
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover;       /* Asegúrate de que la imagen cubra todo el contenedor */
+    min-height: 100vh;            /* Altura mínima para que cubra toda la vista */
+    display: flex;                /* Usar flexbox para centrar el contenido, si es necesario */
+    justify-content: center;      /* Centrar contenido horizontalmente */
+    align-items: center;
+}
+

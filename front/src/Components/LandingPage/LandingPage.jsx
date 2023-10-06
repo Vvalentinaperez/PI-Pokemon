@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
+import './LandingPage.css'
+
 const LandingPage = () => {
     return (
-        <>
-          <h1> LANDING PAGE </h1>
-          <button className="button_input">
-            <Link to="/home">HOME</Link>
-          </button>
-        </>
+          <div className="button.landing">
+            <button >
+              <Link to="/home">HOME</Link>
+            </button>
+        </div>
     )
 }
 

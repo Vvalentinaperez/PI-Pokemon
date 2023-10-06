@@ -59,7 +59,6 @@ export const getPokeByName = (name) => {
        const { data } = await axios(`${endpoint}/pokemon/name?name=${name}`)
        console.log(data)
 
-
        return dispatch({
         type: GET_POKE_BY_NAME, 
         payload: data

@@ -33,17 +33,7 @@ const Form = () => {
     weight: 0, 
   })
 
-  const [error, setError] = useState({
-    name: "", 
-    image: "",
-    types: "",
-    life:"", 
-    attack:"",
-    defense: "",
-    speed: "", 
-    height: "", 
-    weight: ""
-  })
+  const [error, setError] = useState({})
 
 
   const sendPokemons = async (event) => {
@@ -105,10 +95,10 @@ const Form = () => {
     return (
         <form onSubmit={sendPokemons}>
             <label htmlFor="name">Name: </label>
-            <input type="text" name="name" placeholder="Name" value={pokemons.name} onChange={handleChange}/>{error.name && <p style={{color: "red"}}>{error.name}</p>}
+            <input type="text" name="name" placeholder="Name" value={pokemons.name} onChange={handleChange}/>{error?.name && <p style={{color: "red"}}>{error.name}</p>}
           <hr/>
             <label htmlFor="image">Image: </label>
-            <input type="text" name="image" accept="image/*" placeholder="Image" value={pokemons.image} onChange={handleChange} /> {error?.image && <p style={{color: "red"}}>{error.image}</p>}
+            <input type="text" name="image" accept="image/*" placeholder="Image" value={pokemons.image} onChange={handleChange} /> {error.image && <p style={{color: "red"}}>{error.image}</p>}
           <hr/>
             <>
               <label htmlFor="types">Types: </label>
