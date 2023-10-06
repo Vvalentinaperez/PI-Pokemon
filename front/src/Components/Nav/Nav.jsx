@@ -7,6 +7,7 @@ const Nav = () => {
     const handleBack = () => {
         window.history.back();
     }
+
     return(
         <div>
            <SearchBar/>
@@ -15,6 +16,9 @@ const Nav = () => {
               <Link to="/home/form">CREA TU PROKEMON</Link>
            </button>
            <button onClick={handleBack}>BACK</button>
+           <button>
+              <Link to="/home/about">ABOUT</Link>
+           </button>
         </div>
     )
 }
