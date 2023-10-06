@@ -15,7 +15,6 @@ const postPokemons = async (req, res) => {
         if(!name || !image || !life || !attack || !defense || !height || !weight || !speed || !types){
             res.status(400).send("Faltan datos");
         }
-
         if(types.length === 0) return res.status(400).send("Agrega al menos un tipo");
         
         const pokemons = await Pokemon.create({
@@ -33,7 +32,9 @@ const postPokemons = async (req, res) => {
         const typeName = await Type.findAll({
             where: {name: types}
         })
-
+        
+        // const tpName = typeName.map(tp => tp.dataValues.name)
+        // console.log(tpName);
        
         await pokemons.addType(typeName);
             
