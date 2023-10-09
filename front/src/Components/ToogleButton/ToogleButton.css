@@ -1,0 +1,32 @@
+.toggle-btn {
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 3;
+}
+
+.toggle-btn:hover {
+    transform: rotate(90deg);
+}
+
+.toggle-btn:active {
+    transform: scale(1);
+}
+
+.toggle-btn svg {  
+    stroke: #000000; /* Color slate-200 */
+    fill: none;
+    transition: fill 200ms ease-in-out;
+    width: 30px;
+    height: 30px;
+}
+
+.toggle-btn:active svg {
+    fill: #000000; /* Color slate-600 */
+}

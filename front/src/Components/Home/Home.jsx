@@ -1,6 +1,7 @@
-import { getPokemons } from "../../Redux/actions" 
+import '../Home/Home.css'
 import Card from "../Card/Card"
-import './Cards.css'
+import Filters from "../Filters/Filters";
+import { getPokemons } from "../../Redux/actions" 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"
@@ -39,31 +40,31 @@ const Cards = () => {
 
     return (
       <div>
-          <h1>HOME</h1>
-          <button onClick={prevPage} disabled={currentPage === 1}>PREV PAGE</button>
-          <span> Page {currentPage} / {totalPages} </span>
-          <button onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
+           <Filters/>
         <div className="cards-wrapper">
           {
             currentPokemons.map(poke => {
               return (
                 <Card
-                  key={poke.id}
-                  id={poke.id}
-                  name={poke.name}
-                  image={poke.image}
-                  type={poke.type}
-                  life={poke.life}
-                  attack={poke.attack}
-                  defense={poke.defense}
-                  speed={poke.speed}
-                  weight={poke.weight}
-                  height={poke.height}
+                key={poke.id}
+                id={poke.id}
+                name={poke.name}
+                image={poke.image}
+                type={poke.type}
+                life={poke.life}
+                attack={poke.attack}
+                defense={poke.defense}
+                speed={poke.speed}
+                weight={poke.weight}
+                height={poke.height}
                 />
               )
             })
           } 
         </div>
+          <button onClick={prevPage} disabled={currentPage === 1}>PREV PAGE</button>
+          <span> Page {currentPage} / {totalPages} </span>
+          <button onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
       </div>
         
     )

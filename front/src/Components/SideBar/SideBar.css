@@ -1,0 +1,45 @@
+.sideBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 180px;
+    background-color: #121212;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: #ffffff;
+    z-index: 2;
+    transform: translateX(-100%);
+    transition: 0.5s ease-in-out;
+  }
+  
+  .sideBar.open {
+    transform: translate(0);
+  }
+  
+  .sideBar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #888989;
+    display: block;
+    transition: 0.3s;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sideBar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sideBar .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 24px;
+    margin-left: 50px;
+    color: #888989;
+  }
+

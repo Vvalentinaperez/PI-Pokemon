@@ -8,7 +8,6 @@ import { useDispatch, useSelector} from "react-redux";
 
 //Duda: cuando es necesario poner algo en el array de dependencias y cuando no
 
-
 const Form = () => {
 
   const navigate = useNavigate();
@@ -53,14 +52,14 @@ const Form = () => {
   } 
 
   const handleChange = (event) => {
+    const {name, value} = event.target;
+
     setPokemons({
       ...pokemons, 
-      [event.target.name] : event.target.value
+      [name] : value
     })
-    setError(validation({
-      ...pokemons, 
-      [event.target.name] : event.target.value
-    }))
+
+    setError(validation(pokemons))
   }
 
   const handleChangeType = (event) => {
@@ -95,7 +94,7 @@ const Form = () => {
     return (
         <form onSubmit={sendPokemons}>
             <label htmlFor="name">Name: </label>
-            <input type="text" name="name" placeholder="Name" value={pokemons.name} onChange={handleChange}/>{error?.name && <p style={{color: "red"}}>{error.name}</p>}
+            <input type="text" name="name" placeholder="Name" value={pokemons.name} onChange={handleChange}/>{error.name && <p style={{color: "red"}}>{error.name}</p>}
           <hr/>
             <label htmlFor="image">Image: </label>
             <input type="text" name="image" accept="image/*" placeholder="Image" value={pokemons.image} onChange={handleChange} /> {error.image && <p style={{color: "red"}}>{error.image}</p>}

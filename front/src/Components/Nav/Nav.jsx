@@ -1,24 +1,19 @@
 import SearchBar from "../SearchBar/SearchBar";
-import Filters from "../Filters/Filters";
-import { Link } from "react-router-dom";
-const Nav = () => {
-   
+import "../Nav/Nav.css"
 
+
+
+const Nav = () => {
     const handleBack = () => {
         window.history.back();
     }
 
     return(
-        <div>
-           <SearchBar/>
-           <Filters/>
-           <button>
-              <Link to="/home/form">CREA TU PROKEMON</Link>
-           </button>
+        <div  className="navContainer">
+            <div className="searchBar">
+              <SearchBar/>
+            </div>
            <button onClick={handleBack}>BACK</button>
-           <button>
-              <Link to="/home/about">ABOUT</Link>
-           </button>
         </div>
     )
 }
