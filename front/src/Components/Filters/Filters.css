@@ -1,0 +1,46 @@
+/* Estilo base para los botones de filtrado */
+.filter-btn {
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo transparente */
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    margin-left: 10px;
+    border-radius: 10px;
+    color: white; /* Color del texto */
+}
+
+.filter-btn:hover {
+    letter-spacing: 1px;
+    background-color: hsl(261, 100%, 13%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(22, 0, 41) 0px 7px 29px 0px;
+}
+
+.filter-btn:active {
+    letter-spacing: 3px;
+    background-color: hsl(260, 100%, 10%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(27, 0, 77) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+/* Estilo para la opción seleccionada en el menú desplegable */
+.filter-dropdown {
+    border: 2px solid hsl(270, 100%, 75%); /* Borde violeta claro */
+    box-shadow: 0px 0px 10px hsl(270, 50%, 70%); 
+    background-color: rgba(15, 0, 24, 0.9); /* Fondo violeta semi-transparente */
+    color: rgb(255, 255, 255); /* Color del texto */
+    border: none; /* Opcional, para remover cualquier borde predeterminado */
+    padding: 5px 10px; /* Opcional, para dar algo de espacio */
+    border-radius: 10px; /* Opcional, para dar un borde redondeado */
+    margin-top: 10px;
+}
+
+.filter-dropdown:first-child {
+    margin-right: 5px; /* Añade un margen a la derecha del primer dropdown */
+}

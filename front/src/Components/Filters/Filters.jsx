@@ -1,3 +1,4 @@
+import "../Filters/Filters.css"
 import { useDispatch, useSelector } from "react-redux";
 import { orderByOrigin, orderPokes } from "../../Redux/actions";
 
@@ -23,16 +24,16 @@ const Filters = () => {
 
     return (
         <div>
-          <select onChange={handleChange}>
-              <option value="A">ASC</option>
-              <option value="D">DES</option>
-              <option value="ALF-ASC">ALF ASC</option>
-              <option value="ALF-DES">ALF DES</option>
-              <option value="ATTACK">ATTACK</option>
+          <select className="filter-dropdown" onChange={handleChange}>
+              <option value="A"  className="filter-btn">ASC</option>
+              <option value="D"  className="filter-btn">DES</option>
+              <option value="ALF-ASC" className="filter-btn">ALF ASC</option>
+              <option value="ALF-DES" className="filter-btn">ALF DES</option>
+              <option value="ATTACK" className="filter-btn">ATTACK</option>
           </select>
-          <select onChange={handleChangeOrigin}>
-              <option value="API">API</option>
-              <option value="BDD">BDD</option>
+          <select className="filter-dropdown" onChange={handleChangeOrigin}>
+              <option value="API" className="filter-btn">API</option>
+              <option value="BDD" className="filter-btn">BDD</option>
           </select>
         </div>
     )
