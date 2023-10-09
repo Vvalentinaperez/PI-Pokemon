@@ -1,19 +1,17 @@
 import SearchBar from "../SearchBar/SearchBar";
+import ToogleButton from "../Buttons/ToogleButton"
 import "../Nav/Nav.css"
 
 
 
-const Nav = () => {
-    const handleBack = () => {
-        window.history.back();
-    }
-
+const Nav = ({ isOpenSideBar, onToggle }) => {
+   
     return(
         <div  className="navContainer">
-            <div className="searchBar">
-              <SearchBar/>
-            </div>
-           <button onClick={handleBack}>BACK</button>
+            <ToogleButton onClick={onToggle} isOpen={isOpenSideBar}/>
+          <div className="search-container">
+            <SearchBar/>
+          </div>
         </div>
     )
 }

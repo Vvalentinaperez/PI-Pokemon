@@ -14,7 +14,7 @@ const Cards = () => {
   
   useEffect(() => {
     dispatch(getPokemons())
-  }, [])
+  }, []);
 
   //PAGINACION: 12 pokemones por pagina
 
@@ -39,7 +39,7 @@ const Cards = () => {
 
 
     return (
-      <div>
+      <div className='backgroung_home'>
            <Filters/>
         <div className="cards-wrapper">
           {

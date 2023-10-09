@@ -1,3 +1,4 @@
+import "../SearchBar/SearchBar.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPokeByName } from "../../Redux/actions";
@@ -20,9 +21,9 @@ const SearchBar = () => {
     }
     
     return (
-        <div>
-           <input type="search" onChange={handleChange} value={name}/>
-           <button onClick={()=> {onSearch()}}>ADD</button>
+        <div >
+           <input className="search-input" type="search" onChange={handleChange} value={name}/>
+           <button className="search-btn" onClick={()=> {onSearch()}}>ADD</button>
         </div>
     )
 }

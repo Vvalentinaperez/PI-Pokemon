@@ -5,22 +5,23 @@
     border: none;
     padding: 0;
     outline: none;
-    position: fixed;
-    top: 20px;
-    left: 20px;
+    position: relative;
+    top: 3px;
     z-index: 3;
+    order: 1;
+    transform: translateX(60px)
 }
 
 .toggle-btn:hover {
-    transform: rotate(90deg);
+    transform: translateX(60px) rotate(90deg);
 }
 
 .toggle-btn:active {
-    transform: scale(1);
+    transform: translateX(60px) scale(1);
 }
 
 .toggle-btn svg {  
-    stroke: #000000; /* Color slate-200 */
+    stroke: #ffffff; /* Color slate-200 */
     fill: none;
     transition: fill 200ms ease-in-out;
     width: 30px;

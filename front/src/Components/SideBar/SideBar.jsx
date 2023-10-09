@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import "../SideBar/SideBar.css"
-import ToggleButton from "../ToogleButton/ToogleButton";
 
 
-const SideBar = ({ isOpen, onToggle }) => {
+
+const SideBar = ({ isOpen}) => {
     return (
         <div className={`sideBar ${isOpen ? 'open' : ''}`}>
             <Link to="/home/form" className="sideLink">Crea tu Pokemon</Link>

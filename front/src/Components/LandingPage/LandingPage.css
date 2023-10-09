@@ -5,7 +5,7 @@
     justify-content: center;
     height: 100vh; /* Esto toma el 100% de la altura de la pantalla */
     background-color: black;
-     background-image: linear-gradient(to bottom, black, rgb(46, 13, 46)); 
+    background-image: linear-gradient(to bottom, black, rgb(46, 13, 46)); 
 }
 
 .pokemon_landing {

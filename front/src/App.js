@@ -6,7 +6,7 @@ import Form from './Components/Form/Form';
 import About from './Components/About/About';
 import Nav from './Components/Nav/Nav';
 import SideBar from './Components/SideBar/SideBar';
-import ToggleButton from './Components/ToogleButton/ToogleButton';
+import BackButton from './Components/Buttons/BackButton';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState } from "react"
 
@@ -18,16 +18,23 @@ const App = () => {
 
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
   
+  const handleBack = () => {
+    window.history.back(); 
+  }
+
   return (
     <div className="App">
-       <ToggleButton onClick={() => setIsOpenSideBar(!isOpenSideBar)} isOpen={isOpenSideBar}/>
+      
       {location.pathname === "/home" && <SideBar isOpen={isOpenSideBar} onToggle={() => setIsOpenSideBar(!isOpenSideBar)} />}
 
 
       <div className="navBar">
-        {location.pathname !== "/" && !location.pathname.includes("/home/detail/") && location.pathname !== "/home/form" && location.pathname !== "/home/about" && <Nav/> }
+        {location.pathname !== "/" && !location.pathname.includes("/home/detail/") && location.pathname !== "/home/form" && location.pathname !== "/home/about" && <Nav  isOpenSideBar={isOpenSideBar} onToggle={() => setIsOpenSideBar(!isOpenSideBar)}/> }
       </div>
 
+      <div className='button-box'>
+        {location.pathname !== "/" &&  <BackButton handleBack={handleBack} />}
+      </div>
 
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
