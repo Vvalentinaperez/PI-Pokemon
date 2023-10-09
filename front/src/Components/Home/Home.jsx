@@ -62,9 +62,12 @@ const Cards = () => {
             })
           } 
         </div>
-          <button onClick={prevPage} disabled={currentPage === 1}>PREV PAGE</button>
-          <span> Page {currentPage} / {totalPages} </span>
-          <button onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
+
+        <div className="pagination-container">
+            <button className="pagination-btn" onClick={prevPage} disabled={currentPage === 1}>PREV PAGE</button>
+            <span className="page-info"> Page {currentPage} / {totalPages} </span>
+            <button className="pagination-btn" onClick={nextPage} disabled={currentPage === totalPages}>NEXT PAGE</button>
+        </div>
       </div>
         
     )

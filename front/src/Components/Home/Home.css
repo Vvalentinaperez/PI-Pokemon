@@ -1,9 +1,9 @@
 .backgroung_home {
   background-image: url('../util/fondohome.png');
-  background-size: cover;         /* Cubre todo el contenedor */
-  background-repeat: no-repeat;   /* No repetir la imagen */
-  background-position: center;    /* Centra la imagen en el contenedor */
-  background-attachment: fixed;   /* La imagen de fondo se mantendrá fija */
+  background-size: cover;        
+  background-repeat: no-repeat;   
+  background-position: center;    
+  background-attachment: fixed;   
 }
 
 .cards-wrapper {
@@ -14,4 +14,43 @@
     z-index: 1;
     position: relative;
   }
+  .pagination-btn {
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    margin-left: 10px;
+    border-radius: 10px;
+}
 
+.pagination-btn:hover {
+    letter-spacing: 1px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(37, 4, 99) 0px 7px 29px 0px;
+}
+
+.pagination-btn:active {
+    letter-spacing: 3px;
+    background-color: hsl(261, 83%, 40%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(41, 4, 110) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.page-info {
+    color: white;
+}
+
+.pagination-container {
+  position: fixed;  /* Esto hará que el contenedor de paginación esté fijo en la pantalla */
+  bottom: 20px;     /* Esto posiciona el contenedor a 20px del borde inferior de la ventana */
+  left: 50%;        /* Esto centrará el contenedor horizontalmente */
+  transform: translateX(-50%); /* Combinado con 'left: 50%', esto asegura que el contenedor esté perfectamente centrado */
+  z-index: 2;       /* Esto asegura que esté por encima de tus tarjetas */
+}
