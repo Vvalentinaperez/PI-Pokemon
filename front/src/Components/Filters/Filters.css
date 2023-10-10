@@ -29,18 +29,18 @@
     transition: 100ms;
 }
 
-/* Estilo para la opción seleccionada en el menú desplegable */
+
 .filter-dropdown {
     border: 2px solid hsl(270, 100%, 75%); /* Borde violeta claro */
     box-shadow: 0px 0px 10px hsl(270, 50%, 70%); 
     background-color: rgba(15, 0, 24, 0.9); /* Fondo violeta semi-transparente */
     color: rgb(255, 255, 255); /* Color del texto */
-    border: none; /* Opcional, para remover cualquier borde predeterminado */
-    padding: 5px 10px; /* Opcional, para dar algo de espacio */
-    border-radius: 10px; /* Opcional, para dar un borde redondeado */
+    border: none; 
+    padding: 5px 10px; 
+    border-radius: 10px; 
     margin-top: 10px;
 }
 
 .filter-dropdown:first-child {
-    margin-right: 5px; /* Añade un margen a la derecha del primer dropdown */
+    margin-right: 5px; 
 }

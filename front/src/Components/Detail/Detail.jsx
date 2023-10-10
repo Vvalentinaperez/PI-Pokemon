@@ -17,24 +17,50 @@ const Detail = () => {
   }, [id])
 
 
-    return (
-        <div >
-          <div className='detallePoke'>
+  return (
+    <div className='detalle'>
+        <div className='detallePoke'>
             <div className='detalleImagen'>
-              <img id={pokemonDetail?.id} src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
+                <img id={pokemonDetail?.id} src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
             </div>
-              <h1>Name: {pokemonDetail?.name}</h1>
-              <h2>Types: {Array.isArray(pokemonDetail?.types) ? pokemonDetail?.types.join(' ') : pokemonDetail?.types}</h2>
-              <h3>Life: {pokemonDetail?.life}</h3>
-              <h3>Attack: {pokemonDetail?.attack}</h3>
-              <h3>Defense: {pokemonDetail?.defense}</h3>
-              <h3>Speed: {pokemonDetail?.speed}</h3>
-              <h3>Weight: {pokemonDetail?.weight}</h3>
-              <h3>Height: {pokemonDetail?.height}</h3>
-          </div>
-          
+
+            <div className='detalleInfo'>
+                <h1>{pokemonDetail?.name}</h1>
+                <h2>Types:</h2>
+                  {Array.isArray(pokemonDetail?.types) && pokemonDetail?.types.map(type => (
+                  <span key={type}>{type}</span>
+                 ))}
+            </div>
+
+            <div className='detalleProps'>
+                <div>
+                    <h3>Life</h3>
+                    <p>{pokemonDetail?.life}</p>
+                </div>
+                <div>
+                    <h3>Attack</h3>
+                    <p>{pokemonDetail?.attack}</p>
+                </div>
+                <div>
+                    <h3>Defense</h3>
+                    <p>{pokemonDetail?.defense}</p>
+                </div>
+                <div>
+                    <h3>Speed</h3>
+                    <p>{pokemonDetail?.speed}</p>
+                </div>
+                <div>
+                    <h3>Weight</h3>
+                    <p>{pokemonDetail?.weight}</p>
+                </div>
+                <div>
+                    <h3>Height</h3>
+                    <p>{pokemonDetail?.height}</p>
+                </div>
+            </div>
         </div>
-    )
+    </div>
+);
 }
 
 export default Detail;

@@ -1,0 +1,93 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+
+
+.detallePoke {
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(30px);
+    background-color: rgba(130, 6, 161, 0.308);
+    border: 1px solid rgba(255, 255, 255, 0.089);
+    box-shadow: 
+        0 0 10px #6f009e, 
+        0 0 20px #660092,
+        0 0 30px #3a0053,
+        0 0 40px #07000a;
+    overflow: auto;
+}
+
+.detallePoke .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Crea una grilla de 4 columnas con igual espacio */
+    gap: 10px; /* Espaciado entre los elementos */
+    grid-template-rows: repeat(5, auto); /* Crea 5 filas */
+}
+
+/* Estilo general para los inputs y labels */
+.detallePoke label {
+    display: block;
+    margin-bottom: 5px;
+    color: #FFF; /* Puedes cambiar esto si lo necesitas */
+}
+
+.detallePoke input[type="text"],
+.detallePoke input[type="number"],
+.detallePoke textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #FFF;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semi transparente */
+    color: #FFF;
+    margin-bottom: 15px;
+}
+
+.detallePoke button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #6f009e;
+    color: #FFF;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.detallePoke button:hover {
+    background-color: #660092;
+}
+
+.detallePoke .form-sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.detallePoke .left-section,
+.detallePoke .right-section {
+    width: 48%; /* para asegurar un pequeño espacio entre las dos secciones */
+}
+
+.detallePoke .form-sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.detallePoke .left-section,
+.detallePoke .right-section {
+    width: 48%; /* para asegurar un pequeño espacio entre las dos secciones */
+}

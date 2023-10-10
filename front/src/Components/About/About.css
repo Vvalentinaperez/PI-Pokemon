@@ -1,0 +1,71 @@
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; 
+}
+.aboutContainer {
+    width: 600px; 
+    height: 300px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px; /* Más espacio interno */
+    border-radius: 10px;
+    backdrop-filter: blur(30px);
+    background-color: rgba(130, 6, 161, 0.308);
+    border: 1px solid rgba(255, 255, 255, 0.089);
+    position: relative;
+    box-shadow: 0 0 10px #6f009e, 
+                0 0 20px #660092,
+                0 0 30px #3a0053,
+                0 0 40px #07000a;
+}
+
+/* Estilo para que el texto sea blanco */
+
+
+.aboutContainer p {
+    color: white;
+}
+
+.aboutContainer h1 {
+   
+    font-size: 35px;
+    color: rgb(59, 0, 73);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.aboutContainer h2 {
+    font-size: 20px;
+    color: white
+}
+
+.shadow__btn, .shadow__btn a {
+    padding: 10px 20px;
+    border: none;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 7px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    background: rgb(60, 0, 88);
+    box-shadow: 0 0 25px rgb(139, 3, 202);
+    text-decoration: none; /* para eliminar el subrayado del enlace */
+    display: inline-block; /* para que el enlace tome el padding y otros estilos del botón */
+    margin: -500px 0px 20px 20px;
+}
+
+.shadow__btn:hover, .shadow__btn a:hover {
+    box-shadow: 0 0 5px rgb(115, 0, 168),
+                0 0 25px rgb(152, 0, 223),
+                0 0 50px rgb(132, 9, 189),
+                0 0 100px rgb(152, 10, 218);
+  }
