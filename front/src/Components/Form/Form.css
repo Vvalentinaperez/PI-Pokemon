@@ -1,60 +1,67 @@
-.center-container {
+/* Asegurando que html y body tengan altura completa */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor padre que cubre toda la ventana */
+.formContainerWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
+    height: 100vh; /* 100% de la altura de la ventana del navegador */
 }
 
 
-
-.detallePoke {
-    width: 800px;
+.formContain {
+    width: 1000px;
     height: 500px;
+    margin: 20px auto;
     display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     padding: 15px;
     border-radius: 10px;
     backdrop-filter: blur(30px);
     background-color: rgba(130, 6, 161, 0.308);
     border: 1px solid rgba(255, 255, 255, 0.089);
+    cursor: pointer;
+    overflow: auto; 
     box-shadow: 
         0 0 10px #6f009e, 
         0 0 20px #660092,
         0 0 30px #3a0053,
         0 0 40px #07000a;
-    overflow: auto;
 }
 
-.detallePoke .grid {
+
+.formContain .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Crea una grilla de 4 columnas con igual espacio */
-    gap: 10px; /* Espaciado entre los elementos */
-    grid-template-rows: repeat(5, auto); /* Crea 5 filas */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; 
 }
 
-/* Estilo general para los inputs y labels */
-.detallePoke label {
+
+.formContain label {
     display: block;
     margin-bottom: 5px;
-    color: #FFF; /* Puedes cambiar esto si lo necesitas */
+    color: #FFF; 
 }
 
-.detallePoke input[type="text"],
-.detallePoke input[type="number"],
-.detallePoke textarea {
+.formContain input[type="text"],
+.formContain input[type="number"],
+.formContaintextarea {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #FFF;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo semi transparente */
+    background-color: rgba(255, 255, 255, 0.1); 
     color: #FFF;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.detallePoke button {
+.formContain button {
     padding: 10px 15px;
     border: none;
     background-color: #6f009e;
@@ -62,32 +69,109 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: auto;
 }
 
-.detallePoke button:hover {
+.formContain button:hover {
     background-color: #660092;
 }
 
-.detallePoke .form-sections {
+.formContain .form-sections {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
 }
 
-.detallePoke .left-section,
-.detallePoke .right-section {
-    width: 48%; /* para asegurar un pequeño espacio entre las dos secciones */
+.formContain .left-section,
+.formContain .right-section {
+    width: 48%; 
 }
 
-.detallePoke .form-sections {
+.formContain .form-sections {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
 }
 
-.detallePoke .left-section,
-.detallePoke .right-section {
-    width: 48%; /* para asegurar un pequeño espacio entre las dos secciones */
+.formContain .left-section,
+.formContain .right-section {
+    width: 48%; 
+}
+
+.formContain .typeContainer {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
+    width: 450px;
+}
+
+.formContain .typeTitle {
+    margin-bottom: 15px;
+    color: #FFF;
+}
+
+.formContain input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.formContain .typeItem {
+    display: flex;
+    align-items: center;
+}
+
+.formContain .typeItem span {
+    color: #FFF;
+}
+
+.formContain .left-section .numeric-input {
+    width: 48%; 
+    display: inline-block; /* Asegúrate de que se comporten como bloques en línea */
+    margin-right: 2%;
+}
+
+.formContain .numeric-section {
+    display: flex;
+    justify-content: space-between; 
+  
+    flex-wrap: wrap;
+}
+
+.formContain .numeric-container {
+    flex: 0 0 calc(50% - 20px); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    position: relative;
+    width: 48%;
+}
+.formContain .numeric-container2 {
+    flex: 0 0 calc(50% - 20px); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.formContain .numeric-input {
+    flex: 0 0 calc(25% - 10px);
+    margin-right: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+
+
+.formContain .right-section .numeric-section {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap;
+}
+.formContain button:disabled {
+    background-color: #9b9b9b; /* Un color gris para indicar que está desactivado */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no es clickable */
 }

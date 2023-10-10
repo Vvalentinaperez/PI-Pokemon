@@ -10,7 +10,7 @@ export const getPokemons = () => {
         
         try {
             const {data} = await axios(`${endpoint}/pokemon`) 
-
+            
             if(!data){
                 throw Error("No se pudo obtener la informacion requerida");
             }
