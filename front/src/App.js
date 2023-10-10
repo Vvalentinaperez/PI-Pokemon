@@ -33,7 +33,7 @@ const App = () => {
       </div>
 
       <div className='button-box'>
-        {location.pathname !== "/" &&  <BackButton handleBack={handleBack} />}
+        {location.pathname !== "/" && location.pathname !== "/home" && <BackButton handleBack={handleBack} />}
       </div>
 
       <Routes>

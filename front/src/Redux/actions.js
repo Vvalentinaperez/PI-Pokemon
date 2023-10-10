@@ -1,7 +1,7 @@
 import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE, GET_TYPE} from "../Redux/actions-type"
 import axios from "axios";
 
-const endpoint = "http://localhost:3001"
+const endpoint = process.env.REACT_APP_URL
 
 
 
