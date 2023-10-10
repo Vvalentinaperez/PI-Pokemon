@@ -35,12 +35,13 @@ const Form = () => {
 
   const [error, setError] = useState({})
 
+  const endpoint = process.env.REACT_APP_URL
 
   const sendPokemons = async (event) => {
     event.preventDefault()
     try {
       // Usar axios directamente
-      const response = await axios.post(`http://localhost:3001/pokemon`, {...pokemons});
+      const response = await axios.post(`${endpoint}/pokemon`, {...pokemons});
 
       if (response.data && response.data.id) {
           navigate(`/home/detail/${response.data.id}`);
