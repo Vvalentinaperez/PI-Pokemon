@@ -2,7 +2,7 @@ import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POK
 import axios from "axios";
 
 const endpoint = process.env.REACT_APP_URL
-
+console.log(endpoint)
 
 
 export const getPokemons = () => {
