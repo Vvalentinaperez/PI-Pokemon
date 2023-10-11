@@ -44,3 +44,16 @@
 .filter-dropdown:first-child {
     margin-right: 5px; 
 }
+
+.types-menu{
+
+}
+
+.types-dropdown{
+  background-color: white;
+  width:180px;
+  position: absolute;
+  z-index: 10;
+  text-align: left;
+  padding: 5px;
+}

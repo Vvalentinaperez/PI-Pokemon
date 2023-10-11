@@ -48,10 +48,7 @@
 }
 
 .pagination-container {
-  position: fixed;  /* Esto hará que el contenedor de paginación esté fijo en la pantalla */
-  bottom: 20px;     /* Esto posiciona el contenedor a 20px del borde inferior de la ventana */
-  left: 50%;        /* Esto centrará el contenedor horizontalmente */
-  transform: translateX(-50%); /* Combinado con 'left: 50%', esto asegura que el contenedor esté perfectamente centrado */
-  z-index: 2;
-  top: 550px;       /* Esto asegura que esté por encima de tus tarjetas */
+  bottom: 30px;     /* Esto posiciona el contenedor a 20px del borde inferior de la ventana */
+  left: 0;    
+  right: 0;    
 }

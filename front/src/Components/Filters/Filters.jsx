@@ -1,7 +1,9 @@
 import "../Filters/Filters.css"
 import { useDispatch, useSelector } from "react-redux";
-import { orderByOrigin, orderPokes } from "../../Redux/actions";
+import { getTypes, orderByOrigin, orderByType, orderPokes } from "../../Redux/actions";
+import { useEffect, useState } from "react";
 
+//
 
 
 const Filters = () => {
@@ -10,7 +12,16 @@ const Filters = () => {
     //Esta es la lista que se mostrara para los filtros
     const pokemonsCopy = useSelector(state => state.copyPokemons)
 
+    const [selectedType, setSelectedType] = useState([]);
+    const [showTypesMenus, setsShowTypesMenus] = useState(false);
+    const types = useSelector(state => state.myTypes);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getTypes()) 
+    }, [dispatch])
+   
+    
 
     const handleChange = (event) => {
         const orderType = event.target.value;
@@ -21,6 +32,25 @@ const Filters = () => {
         const originOrder = event.target.value;
         dispatch(orderByOrigin(originOrder, pokemonsCopy))
     }
+
+
+    const handleTypeChange = (event) => {  //Esta es mi funcion es la que guarda en un array con los seleccionados 
+       const typeName = event.target.value;
+       let selected;
+
+       if(selectedType.includes(typeName)){ 
+         setSelectedType(selectedType.filter((type) => type !== typeName))  //Es lo que actualiza el estado 
+         selected = selectedType.filter((type) => type !== typeName)  //Es lo que le mando al dispatch
+       }else{
+         setSelectedType([...selectedType, typeName]);
+         selected = [...selectedType, typeName]
+       }
+    //    const selected = [...selectedType];
+    
+       dispatch(orderByType(pokemonsCopy, selected));
+       console.log(selected);
+    }
+       
 
     return (
         <div>
@@ -35,6 +65,28 @@ const Filters = () => {
               <option value="API" className="filter-btn">API</option>
               <option value="BDD" className="filter-btn">BDD</option>
           </select>
+          <div className="types-dropdown">
+            <button className="types-dropdown-button" onClick={
+                () => {setsShowTypesMenus(!showTypesMenus)}
+            }>SELECT TYPES</button>
+            {showTypesMenus && (
+                <div className="types-menu">
+                    {
+                        types.map((type) => ( //1-Renderiza los typos y le puse un estado para que guarde los que estan seleccionados y los que no
+                            <div key={type.id}>
+                                <input 
+                                type="checkbox" 
+                                value={type.name}
+                                checked={selectedType.includes(type.name)}
+                                onChange={handleTypeChange}
+                                ></input>
+                                <label>{type.name}</label>
+                            </div>
+                        ))
+                    }
+                </div>
+            )}
+          </div>
         </div>
     )
 }

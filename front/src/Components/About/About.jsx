@@ -1,11 +1,8 @@
 import "../About/About.css"
-import { Link } from "react-router-dom"
+
 const About = () => {
     return(
         <div className="about">
-           
-                <Link to="/home" className="shadow__btn">HOME</Link>
-               
            <div className="aboutContainer">
             <div className="contenedorText">
               <h1>Valentina Perez</h1>

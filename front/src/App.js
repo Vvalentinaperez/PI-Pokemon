@@ -7,6 +7,7 @@ import About from './Components/About/About';
 import Nav from './Components/Nav/Nav';
 import SideBar from './Components/SideBar/SideBar';
 import BackButton from './Components/Buttons/BackButton';
+import Footer from "./Components/Footer/Footer";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState } from "react"
 
@@ -24,7 +25,7 @@ const App = () => {
 
   return (
     <div className="App">
-      
+     <div className="main-content">
       {location.pathname === "/home" && <SideBar isOpen={isOpenSideBar} onToggle={() => setIsOpenSideBar(!isOpenSideBar)} />}
 
 
@@ -33,7 +34,7 @@ const App = () => {
       </div>
 
       <div className='button-box'>
-        {location.pathname !== "/" && location.pathname !== "/home" && <BackButton handleBack={handleBack} />}
+        {location.pathname !== "/" && location.pathname !== "/home" && !location.pathname !== "/home/detail/"  && !location.pathname !== "/home/form"  && <BackButton handleBack={handleBack} />}
       </div>
 
       <Routes>
@@ -43,6 +44,10 @@ const App = () => {
         <Route path='/home/form' element={<Form/>}/>
         <Route path='/home/about' element={<About/>}/>
       </Routes>
+     </div> 
+      <div>
+        {location.pathname !== "/" && !location.pathname.includes("/home/detail/") && location.pathname !== "/home/form" && location.pathname !== "/home/about" && <Footer/>}
+      </div>
     </div>
   );
   

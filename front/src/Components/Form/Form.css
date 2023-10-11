@@ -1,16 +1,14 @@
-/* Asegurando que html y body tengan altura completa */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* Contenedor padre que cubre toda la ventana */
 .formContainerWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 100% de la altura de la ventana del navegador */
+    height: 100vh; 
 }
 
 
@@ -51,14 +49,14 @@ html, body {
 
 .formContain input[type="text"],
 .formContain input[type="number"],
-.formContaintextarea {
+.formContain textarea {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #FFF;
     background-color: rgba(255, 255, 255, 0.1); 
     color: #FFF;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .formContain button {

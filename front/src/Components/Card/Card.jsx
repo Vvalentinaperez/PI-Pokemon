@@ -7,7 +7,9 @@ const Card = ({id, name, image, type}) => {
             <Link to={`detail/${id}`}>
               <h2>{name}</h2>
             </Link>
-              <img src={image} alt={name}/>
+            <div className='image_card'>
+              <img  src={image} alt={name}/>
+            </div>
             <h4>{type}</h4>
           
         </div>

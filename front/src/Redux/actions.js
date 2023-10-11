@@ -1,4 +1,4 @@
-import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE, GET_TYPE} from "../Redux/actions-type"
+import {CLEAN_DETAIL, GET_POKEMONS, GET_POKE_DETAIL, GET_POKE_BY_NAME, ORDER_POKE, ORDER_BY_ORIGIN, CREATE_POKE, GET_TYPE, ORDER_BY_TYPE} from "../Redux/actions-type"
 import axios from "axios";
 
 const endpoint = process.env.REACT_APP_URL
@@ -108,6 +108,21 @@ export const orderByOrigin = (originOrder, pokemons) =>  {
         
     } catch (error) {
         console.log(error.message)
+    }
+}
+
+export const orderByType = (pokemonsCopy, selected) => { //Esta es la funcion que se encarga de filtrar los pokemones
+    try {
+      const filteredPokemon = pokemonsCopy.filter(pokemon => {
+          const matchesSelectedType = selected.length === 0 || 
+          selected.every((type) => pokemon.type.includes(type))
+          return matchesSelectedType;
+      })
+      
+      return {type: ORDER_BY_TYPE, payload: filteredPokemon}
+
+    } catch (error) {
+        console.log(error.message);
     }
 }
 

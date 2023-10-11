@@ -6,15 +6,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"
 
-const Cards = () => {
+const Home = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector(state => state.myPokemons);
-  console.log(pokemons)
+
   const [currentPage, setCurrentPage ] = useState(1); //PAGINACION: Creo un estado para saber en que pagina estoy parado (1 porque empieza en la pagina 1)
   
   useEffect(() => {
     dispatch(getPokemons())
-  }, []);
+  }, [dispatch]);
 
   //PAGINACION: 12 pokemones por pagina
 
@@ -37,10 +37,14 @@ const Cards = () => {
       setCurrentPage(currentPage - 1)}
   }
 
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [pokemons])
+
 
     return (
       <div className='backgroung_home'>
-           <Filters/>
+           <Filters />
         <div className="cards-wrapper">
           {
             currentPokemons.map(poke => {
@@ -73,4 +77,4 @@ const Cards = () => {
     )
 }
 
-export default Cards;
+export default Home;
