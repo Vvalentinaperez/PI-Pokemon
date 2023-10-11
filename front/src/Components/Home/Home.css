@@ -64,3 +64,20 @@
   z-index: 5; /* Se asegura de que esté por encima de las cartas pero debajo de otros elementos con un z-index superior */
   padding: 10px 0; /* Espacio adicional para mejorar la apariencia */
 }
+
+/* Estiliza el canal (parte trasera) de la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 10px;  /* Define el ancho de la barra de desplazamiento */
+  background-color: #121212;  /* Color de fondo del canal */
+}
+
+/* Estiliza el pulgar (control deslizable) de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  background-color: #340563;  /* Color violeta */
+  border-radius: 5px;  /* Esquinas redondeadas */
+}
+
+/* Estiliza el pulgar (control deslizable) de la barra de desplazamiento cuando se pasa el mouse por encima */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #700c74;  /* Un tono violeta un poco más oscuro para el efecto hover */
+}
