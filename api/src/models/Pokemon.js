@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('pokemon', {
         id:{
-            type: DataTypes.UUID, //Crea un id automatico cada vez que hago un post
+            type: DataTypes.UUID, //UUID es un identificador unico universal
             defaultValue: DataTypes.UUIDV4, 
             allowNull: false,
             primaryKey: true

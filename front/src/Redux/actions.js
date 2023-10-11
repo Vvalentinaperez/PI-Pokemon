@@ -31,7 +31,7 @@ export const getPokeDetail = (id) => {
         try {
             // console.log(id);
             const { data } = await axios.get(`${endpoint}/pokemon/${id}`)
-            console.log(data);
+           
             if(!data){
                 throw Error("No se pudo acceder al detalle del pokemon");
             }
@@ -42,7 +42,7 @@ export const getPokeDetail = (id) => {
             })
             
         } catch (error) {
-            console.log(error.message);
+            alert(error);
         }
     }
 }

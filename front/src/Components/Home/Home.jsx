@@ -55,12 +55,6 @@ const Home = () => {
                 name={poke.name}
                 image={poke.image}
                 type={poke.type}
-                life={poke.life}
-                attack={poke.attack}
-                defense={poke.defense}
-                speed={poke.speed}
-                weight={poke.weight}
-                height={poke.height}
                 />
               )
             })

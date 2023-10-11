@@ -2,15 +2,16 @@ const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/pokemon"
 const {Pokemon} = require("../db");
 
-//Aca lo que hacemos es recuperar todos los Pokemones de la base de datos, y a cada uno de ellos le estoy añadiendo una propiedad "origin" con valor "BDD" (eso para los filtros), Hago lo mismo de la API externa y a cada uno de ellos le agrego la propiedad origin con valor "API". Finalmente, combino ambas listas y las devuelvo. 
+//Aca lo que voy a hacer primeramente es traerme todos los pokemones que esten guardados en la base de datos. Una vez que hice esto, voy a hacerle una peticion a mi api para para poder obtenerlos por la api externa. Voy a hacer una segunda peticion a result.url debido a que alli se encuentran todos los datos que necesito. El Promise.All espera hasta que todas las promesas se hayan resuelto y ahi me da el resultado. Cuando tengo el resultado voy a retornar un array de objetos con las propiedades necesarias. Despues hago una copia de los pokemones de la base de datos con los de la api y la retorno. 
+
 
 const getPokemons = async (_req, res) => {
     try {
 
       const pokeBdd = await Pokemon.findAll();
      
-        const { data } = await axios(`${URL}?limit=48`)
-        const results = data.results; 
+      const { data } = await axios(`${URL}?limit=48`)
+      const results = data.results; 
 
         const detailPoke = await Promise.all(
         results.map(async (result) => {
