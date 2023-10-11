@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTypes, orderByOrigin, orderByType, orderPokes } from "../../Redux/actions";
 import { useEffect, useState } from "react";
 
-//
+
 
 
 const Filters = () => {
@@ -66,9 +66,9 @@ const Filters = () => {
               <option value="BDD" className="filter-btn">BDD</option>
           </select>
           <div className="types-dropdown">
-            <button className="types-dropdown-button" onClick={
+            <button className="types-dropdown-button filter-btn" onClick={
                 () => {setsShowTypesMenus(!showTypesMenus)}
-            }>SELECT TYPES</button>
+            }>TYPES</button>
             {showTypesMenus && (
                 <div className="types-menu">
                     {

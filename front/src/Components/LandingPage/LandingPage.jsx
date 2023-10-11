@@ -9,9 +9,12 @@ const LandingPage = () => {
            <img src={poke} className="pokemon_landing"/>
           
              <div >
-               <button className="button_landing"> 
-                <Link to="/home">HOME</Link>
-               </button>
+
+              <Link to="/home" className="button_land">
+                 <button className="button_landing"> 
+                  HOME
+                 </button> 
+              </Link>
              </div>
       </div>
          

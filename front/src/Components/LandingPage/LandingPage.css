@@ -14,7 +14,9 @@
     max-width: 90%;
     
 }
-
+.button_land{
+    text-decoration: none;
+}
 .button_landing {
     --glow-color: rgb(217, 176, 255);
     --glow-spread-color: rgba(191, 123, 255, 0.781);
@@ -41,13 +43,7 @@
     cursor: pointer;
 }
 
-.button_landing a {
-    text-decoration: none;
-    color: var(--glow-color);
-    display: block;
-    width: 100%;
-    height: 100%;
-}
+
 
 .button_landing:hover {
     color: var(--btn-color);
@@ -74,7 +70,7 @@
     background-color: var(--glow-spread-color);
     filter: blur(2em);
     opacity: .7;
-    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+    transform: perspective(1.0em) rotateX(35deg) scale(1, .6);
 }
 
 .button_landing:hover a {

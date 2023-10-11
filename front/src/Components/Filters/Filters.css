@@ -1,16 +1,16 @@
-/* Estilo base para los botones de filtrado */
 .filter-btn {
     padding: 5px 10px;
     border-radius: 50px;
     border: 0;
-    background-color: rgba(255, 255, 255, 0.5); /* Fondo transparente */
+    background-color: rgba(33, 0, 54, 0.5); 
     box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
     text-transform: uppercase;
     font-size: 15px;
     transition: all .5s ease;
     margin-left: 10px;
     border-radius: 10px;
-    color: white; /* Color del texto */
+    color: white; 
+    margin: 0 auto;
 }
 
 .filter-btn:hover {
@@ -45,15 +45,48 @@
     margin-right: 5px; 
 }
 
-.types-menu{
-
+.types-dropdown .filter-btn {
+    box-shadow: rgba(255, 255, 255, 0.774) 0 0 8px;
+    padding: 5px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: rgba(33, 0, 54, 0.5); 
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all .5s ease;
+    margin-left: 4px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255); 
 }
 
-.types-dropdown{
-  background-color: white;
-  width:180px;
+.types-menu{
+  background-color: rgba(33, 0, 54, 0.5); 
+  height: 100px;
+  box-shadow: rgba(255, 255, 255, 0.774) 0 0 8px;
+  overflow-y: scroll;
   position: absolute;
   z-index: 10;
-  text-align: left;
   padding: 5px;
+  left:45%;
+  right: 45%;
+  border-radius: 10px;
+  color: white;
 }
+
+.types-menu::-webkit-scrollbar {
+    width: 8px; /* Grosor del scroll */
+    background-color: rgba(0, 0, 0, 0.1); /* Color de fondo del canal del scroll */
+}
+
+.types-menu::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 100%); /* Color del control deslizable del scroll */
+    border-radius: 10px;
+    border: 2px solid transparent; /* Espacio entre el control deslizable y el canal */
+    background-clip: content-box;
+}
+
+
+.types-menu::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(294, 100%, 35%);
+}
+

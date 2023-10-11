@@ -37,7 +37,7 @@
     background-color: hsl(261, 83%, 40%);
     color: hsl(0, 0%, 100%);
     box-shadow: rgb(41, 4, 110) 0px 0px 0px 0px;
-    transform: translateY(10px);
+    transform: translateY(5px);
     transition: 100ms;
    }
      

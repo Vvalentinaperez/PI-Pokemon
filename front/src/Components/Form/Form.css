@@ -9,6 +9,7 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 100vh; 
+    overflow-y: inherit;
 }
 
 
@@ -24,8 +25,6 @@ html, body {
     backdrop-filter: blur(30px);
     background-color: rgba(130, 6, 161, 0.308);
     border: 1px solid rgba(255, 255, 255, 0.089);
-    cursor: pointer;
-    overflow: auto; 
     box-shadow: 
         0 0 10px #6f009e, 
         0 0 20px #660092,
@@ -33,30 +32,31 @@ html, body {
         0 0 40px #07000a;
 }
 
-
-.formContain .grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 15px; 
-}
-
-
 .formContain label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: #FFF; 
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .formContain input[type="text"],
 .formContain input[type="number"],
 .formContain textarea {
+    box-sizing: border-box;
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #FFF;
     background-color: rgba(255, 255, 255, 0.1); 
     color: #FFF;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+}
+
+.formContain p {
+  color: red;
+  font-size: 11px;
+  margin-top: 2px;
 }
 
 .formContain button {
@@ -67,109 +67,81 @@ html, body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: auto;
+    margin-top: 20px;
 }
 
 .formContain button:hover {
     background-color: #660092;
 }
 
-.formContain .form-sections {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
+.formContain button:disabled {
+    background-color: #af4eff; 
+    cursor: not-allowed; 
 }
 
-.formContain .left-section,
-.formContain .right-section {
+.form-sections {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.left-section,
+.right-section {
     width: 48%; 
 }
 
-.formContain .form-sections {
+.numeric-section {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
+    justify-content: space-evenly; 
 }
 
-.formContain .left-section,
-.formContain .right-section {
-    width: 48%; 
+.numeric-container {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
 }
 
-.formContain .typeContainer {
+.num-container{
+    height: 100px;
+}
+
+.typeTitle {
+    margin-bottom: 15px;
+    color: #FFF;
+    margin-top: 30px;
+}
+
+.typeContainer {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     padding: 15px;
     margin-top: 10px;
-    width: 450px;
+    width: 445px;
 }
 
-.formContain .typeTitle {
-    margin-bottom: 15px;
-    color: #FFF;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
+    padding-inline: 20px;
 }
 
 .formContain input[type="checkbox"] {
     margin-right: 5px;
 }
 
-.formContain .typeItem {
+.typeItem {
     display: flex;
     align-items: center;
-}
-
-.formContain .typeItem span {
     color: #FFF;
 }
 
-.formContain .left-section .numeric-input {
-    width: 48%; 
-    display: inline-block; /* Asegúrate de que se comporten como bloques en línea */
-    margin-right: 2%;
-}
+.pokeformsen {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    right: 7px;
+    bottom: 0px;
 
-.formContain .numeric-section {
-    display: flex;
-    justify-content: space-between; 
-  
-    flex-wrap: wrap;
-}
-
-.formContain .numeric-container {
-    flex: 0 0 calc(50% - 20px); 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 15px;
-    position: relative;
-    width: 48%;
-}
-.formContain .numeric-container2 {
-    flex: 0 0 calc(50% - 20px); 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.formContain .numeric-input {
-    flex: 0 0 calc(25% - 10px);
-    margin-right: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
-
-
-
-.formContain .right-section .numeric-section {
-    display: flex;
-    justify-content: space-between; 
-    flex-wrap: wrap;
-}
-.formContain button:disabled {
-    background-color: #9b9b9b; /* Un color gris para indicar que está desactivado */
-    cursor: not-allowed; /* Cambia el cursor para indicar que no es clickable */
+    
 }
