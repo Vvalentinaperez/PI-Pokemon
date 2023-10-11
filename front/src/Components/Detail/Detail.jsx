@@ -1,5 +1,5 @@
 import './Detail.css';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokeDetail, cleanDetail } from "../../Redux/actions";
@@ -19,6 +19,11 @@ const Detail = () => {
 
   return (
     <div className='detalle'>
+              <Link to="/home" className="button_detail">
+                 <button className="search-btn"> 
+                  HOME
+                 </button> 
+              </Link>
         <div className='detallePoke'>
             <div className='detalleImagen'>
                 <img id={pokemonDetail?.id} src={pokemonDetail?.image} alt={pokemonDetail?.name}/> 
