@@ -5,7 +5,7 @@ import "../Nav/Nav.css"
 
 
 const Nav = ({ isOpenSideBar, onToggle }) => {
-   
+
     return(
         <div  className="navContainer">
             <ToogleButton onClick={onToggle} isOpen={isOpenSideBar}/>
