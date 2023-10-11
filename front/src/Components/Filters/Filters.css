@@ -67,10 +67,10 @@
   position: absolute;
   z-index: 10;
   padding: 5px;
-  left:45%;
-  right: 45%;
   border-radius: 10px;
   color: white;
+  width: 105px;
+  transform: translateX(8%);
 }
 
 .types-menu::-webkit-scrollbar {
@@ -90,3 +90,12 @@
     background-color: hsl(294, 100%, 35%);
 }
 
+.filters-wrapper {
+    text-align: center; 
+   
+}
+
+.filter-dropdown, .types-dropdown {
+    display: inline-block;
+    margin: 5px 3px;  /* Añade un pequeño espacio entre los filtros */
+}

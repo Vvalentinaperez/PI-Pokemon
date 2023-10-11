@@ -6,13 +6,23 @@
   background-attachment: fixed;   
 }
 
+.backgroung_home {
+  display: flex;
+  flex-direction: column;  /* Establece la dirección de los elementos hijos en vertical */
+  min-height: 100vh;  /* Asegura que el contenedor principal ocupa al menos toda la altura de la ventana */
+}
+
 .cards-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     z-index: 1;
+    margin-bottom: 50px;
+    flex-grow: 1;
+    min-height: calc(100vh - (50px + 40px + 40px + 30px));
   }
+
   .pagination-btn {
     padding: 5px 10px;
     border-radius: 50px;
@@ -47,7 +57,10 @@
 }
 
 .pagination-container {
-  bottom: 30px;     /* Esto posiciona el contenedor a 20px del borde inferior de la ventana */
-  left: 0;    
-  right: 0;    
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5; /* Se asegura de que esté por encima de las cartas pero debajo de otros elementos con un z-index superior */
+  padding: 10px 0; /* Espacio adicional para mejorar la apariencia */
 }

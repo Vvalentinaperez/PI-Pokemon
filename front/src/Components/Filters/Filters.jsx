@@ -53,7 +53,7 @@ const Filters = () => {
        
 
     return (
-        <div>
+        <div className="filters-wrapper">
           <select className="filter-dropdown" onChange={handleChange}>
               <option value="A"  className="filter-btn">ASC</option>
               <option value="D"  className="filter-btn">DES</option>
