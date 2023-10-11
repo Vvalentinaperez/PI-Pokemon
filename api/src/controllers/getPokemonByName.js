@@ -9,7 +9,7 @@ const getPokemonByName = async (req, res) => {
         const { name } = req.query
         const nameMayus = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         
-        let pokeByName
+        let pokeByName;
         pokeByName = await Pokemon.findOne({
             where: {name: nameMayus}
         })
