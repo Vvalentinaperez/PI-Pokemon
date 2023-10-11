@@ -8,8 +8,8 @@
 
 .backgroung_home {
   display: flex;
-  flex-direction: column;  /* Establece la dirección de los elementos hijos en vertical */
-  min-height: 100vh;  /* Asegura que el contenedor principal ocupa al menos toda la altura de la ventana */
+  flex-direction: column;  
+  min-height: 100vh;  
 }
 
 .cards-wrapper {
