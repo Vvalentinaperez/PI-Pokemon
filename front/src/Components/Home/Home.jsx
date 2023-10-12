@@ -54,7 +54,7 @@ const Home = () => {
                 id={poke.id}
                 name={poke.name}
                 image={poke.image}
-                type={poke.type}
+                types={poke.types}
                 />
               )
             })

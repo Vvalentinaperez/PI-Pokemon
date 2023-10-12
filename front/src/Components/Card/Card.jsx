@@ -1,7 +1,7 @@
 import './Card.css'
 import {Link} from "react-router-dom"
 
-const Card = ({id, name, image, type}) => {
+const Card = ({id, name, image, types}) => {
     return (
         <div className="card">
             <Link to={`detail/${id}`}>
@@ -10,7 +10,7 @@ const Card = ({id, name, image, type}) => {
             <div className='image_card'>
               <img  src={image} alt={name}/>
             </div>
-            <h4>{type}</h4>
+            <h4>{types}</h4>
           
         </div>
     )

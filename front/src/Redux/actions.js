@@ -115,7 +115,7 @@ export const orderByType = (pokemonsCopy, selected) => { //Esta es la funcion qu
     try {
       const filteredPokemon = pokemonsCopy.filter(pokemon => {
           const matchesSelectedType = selected.length === 0 || 
-          selected.every((type) => pokemon.type.includes(type))
+          selected.every((type) => pokemon.types.includes(type))
           return matchesSelectedType;
       })
       
