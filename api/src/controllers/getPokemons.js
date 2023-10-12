@@ -10,7 +10,7 @@ const getPokemons = async (_req, res) => {
     try {
 
       const pokeBdd = await Pokemon.findAll();
-      let pokeType;
+      let pokeType = [];
 
       if(pokeBdd.length !== 0){
        pokeType = await Promise.all(pokeBdd.map( async (poke) => {
