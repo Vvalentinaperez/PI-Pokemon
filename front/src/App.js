@@ -34,7 +34,7 @@ const App = () => {
       </div>
 
       <div className='button-box'>
-        {location.pathname !== "/"  && !location.pathname !== "/home/detail/"  && !location.pathname !== "/home/form"  && <BackButton handleBack={handleBack} />}
+        {location.pathname !== "/" && location.pathname !== "/home" && !location.pathname !== "/home/detail/"  && !location.pathname !== "/home/form"  && <BackButton handleBack={handleBack} />}
       </div>
 
       <Routes>
