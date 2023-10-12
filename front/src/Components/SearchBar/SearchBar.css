@@ -1,6 +1,3 @@
-.search-container {
- margin-right: 40px;
-}
 
 
 .search-input {
@@ -46,8 +43,5 @@
     transition: 100ms;
    }
 
-  .button_home{
-    position: absolute;
-    transform: translateX(380%) translateY(-10%)
-  }
+
   

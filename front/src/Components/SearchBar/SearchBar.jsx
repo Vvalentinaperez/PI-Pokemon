@@ -20,12 +20,17 @@ const SearchBar = () => {
     const onSearch = () => {
         dispatch(getPokeByName(name))
     }
+
+    const handleBack = () => {
+        window.history.back(); 
+      }
+    
     
     return (
         <div className="search-container" >
            <input className="search-input" type="search" onChange={handleChange} value={name}/>
            <button className="search-btn" onClick={()=> {onSearch()}}>Search</button>
-           <Link className="button_home" to="/home"><button className="search-btn">HOME</button></Link>
+           <button className="search-btn" onClick={handleBack}>BACK</button>
         </div>
     )
 }
