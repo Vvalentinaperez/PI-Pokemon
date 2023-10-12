@@ -2,11 +2,7 @@ const { Pokemon, Type } = require("../db");
 const { v4:uuidv4 } = require("uuid");
 const {Op} = require("sequelize");
 
-//Lo que primero va a hacer es obtener la informacion que voy a usar para agregar el Pokemon. Y voy a verificar que todos existan, si falta alguno me lanza un error. Paso siguiente, vamos a crear el pokemon y agregarlo a la base de datos. Si el pokemon no se pudo crear, porque por ejemplo ya existia en la base de datos me lanza un error. 
-
-//Paso siguiente, lo que va a ahcer es verificar en la base de datos si ese pokemon tambien tiene un type, si no lo tiene lo va a crear y lo va a agregar al pokemon que acabamos de crear. 
-
-//Si algo sale mal, me arroja un errror. 
+//Lo primero que hace es traerse todas las propiedades por body. Verifican que existan, si no existen me lanza un mensaje de advertencia. Paso siguiente, lo que vamos a hacer es crear un pokemon en la base de datos, usando el modelo Pokemon, y los datos extraidos. Despues, va a buscar en la base de datos si el tipo requerido ya existe. Paso siguiente, vamos a asociar mi pokemon creado con los tipos. Despues va a buscar el pokemon creado por su id y lo va a devolver. 
 
 const postPokemons = async (req, res) => {
     try {
@@ -15,6 +11,7 @@ const postPokemons = async (req, res) => {
         if(!name || !image || !life || !attack || !defense || !height || !weight || !speed || !types){
             res.status(400).send("Faltan datos");
         }
+
         if(types.length === 0) return res.status(400).send("Agrega al menos un tipo");
         
         const pokemons = await Pokemon.create({
@@ -33,13 +30,10 @@ const postPokemons = async (req, res) => {
             where: {name: types}
         })
         
-        // const tpName = typeName.map(tp => tp.dataValues.name)
-        // console.log(tpName);
-       
+     
         await pokemons.addType(typeName);
             
     
-        
         const result = await Pokemon.findByPk(pokemons.id, {
             include: {
                 model:Type, 

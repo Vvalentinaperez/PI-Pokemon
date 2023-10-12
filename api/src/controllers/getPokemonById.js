@@ -3,15 +3,15 @@ const URL = "https://pokeapi.co/api/v2/pokemon";
 const { Pokemon, Type} = require("../db");
 
 
-//La funcionalidad de este controlador es traer pokemones por medio de su id. Entonces, me voy a traer el id con params y voy a verificar si es de tipo UUID. Si es UUID, primero voy a ir a ver si ese pokemon ya existe en mi base de datos, si existe lo voy a devolver. Si no existe, lo voy a traer de la api y lo voy a devolver. Si en el proceso courrio algo, me lanza un error. 
-
+//La funcionalidad de este controlador es traer pokemones por el id. Si el id es de tipo UUID, entonces busca en la base de datos un pokemon que coincida con ese id. Ademas de la info del pokemon, quiero incluir el nombre de los tipos que tenga ese Pokemon. Ojo: mis types, contienen mas info, yo solamente me quiero quedar con su propiedad name, que es donde se encuentran los tipos del pokemon. Por eso, lo recorro y me quedo con esa prop. Ahora, lo que vamos a hacer es pasar mi objeto de tipo json a Javascrip puro y le agrego una nueva prop que es el type. 
+//Si no encuentra el pokemon en la base de datos, lo busca en la api. Si la api me devolvio una respuesta afirmativa, se crea un nuevo objeto a partir de esa respuesta y me la devuelve. 
 
 const getPokemonById = async (req, res) => {
     try {
         const { id } = req.params;
         const isUUID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id);
 
-        let pokemon 
+        let pokemon;
 
         if(isUUID){
            pokemon = await Pokemon.findOne(
@@ -21,12 +21,13 @@ const getPokemonById = async (req, res) => {
           )
           const types = pokemon.types.map(type => type.name)
           pokemon = {...pokemon.toJSON(), types}
-      }
+        }
 
       if(!pokemon){
       const { data } = await axios(`${URL}/${id}`); 
       
       if(!data){return res.status(204).json("No se encontro el Pokemon solicitado")}
+
         pokemon = {
             id: data.id,
             name: data.name,
@@ -42,10 +43,7 @@ const getPokemonById = async (req, res) => {
       }
       return res.status(201).json(pokemon)
         
-    
-
     } catch (error) {
-      console.log(error.message);
         res.status(404).json("No se encontraron pokemones con ese id");
     }
 }

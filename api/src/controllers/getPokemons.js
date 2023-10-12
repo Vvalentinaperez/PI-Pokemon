@@ -28,8 +28,8 @@ const getPokemons = async (_req, res) => {
           }
         }))
         
-        const allPokemons = [...pokeBdd, ...detailPoke];
-        return res.status(200).json(allPokemons);
+      const allPokemons = [...pokeBdd, ...detailPoke];
+      return res.status(200).json(allPokemons);
     
     } catch (error) {
         res.status(500).json(error.message)
