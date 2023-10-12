@@ -23,7 +23,7 @@ const Home = () => {
   const end = start + pokemonsForPage; 
   const currentPokemons = pokemons?.slice(start, end); 
 
-  const totalPages = Math.ceil(pokemons.length / pokemonsForPage); //Divide la cant total de pokes entre la cantidad de pokes por pagina para determinar cuantas paginas necesitaras en total. El math ceil redondea hacia arriba, asegurando que haya suficientes paginas incluso si hay un residuo. 
+  const totalPages = Math.ceil(pokemons.length / pokemonsForPage); 
 
   //currentPage: pagina en la que me encuentro
 

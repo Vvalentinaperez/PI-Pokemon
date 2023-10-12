@@ -8,21 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 
 
-//Duda: cuando es necesario poner algo en el array de dependencias y cuando no
-
 const Form = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const type = useSelector(state => state.myTypes);
+  const [error, setError] = useState({})
 
- 
-  useEffect(() => {
-    dispatch(getTypes())
-  }, [dispatch])
-
-
-  const [ pokemons, setPokemons ] = useState({
+  const [ pokemons, setPokemons ] = useState({  //Se inicializa para almacenar datos del Pokemon
     name: "",
     image: "", 
     types: [],
@@ -33,12 +26,56 @@ const Form = () => {
     height: 0, 
     weight: 0, 
   })
+  
+ 
+  useEffect(() => {
+    dispatch(getTypes())
+  }, [dispatch])
 
-  const [error, setError] = useState({})
 
-  const endpoint = process.env.REACT_APP_URL
+  //Esta funcion ocurre cuando un usuario escribe o selecciona algo en el formulario (son manejadores de eventos)
 
-  const sendPokemons = async (event) => {
+  const handleChange = (event) => { 
+    const {name, value} = event.target;
+    setPokemons({
+      ...pokemons, 
+      [name] : value
+    })
+    setError(validation(pokemons)) //Actualiza directo el estado y valida el input
+  }
+  //Verifica si al menos un tipo fue seleccionado
+  const handleChangeType = (event) => {
+    const tpName = event.target.value;
+    const isChecked = event.target.checked;
+    
+    let updateTypes;
+    
+    if(isChecked){
+      updateTypes = [...pokemons.types, tpName];
+    }else{
+      updateTypes = pokemons.types.filter((tps) => tps !== tpName);
+    }
+    
+    setPokemons({...pokemons, types: updateTypes});
+    console.log(pokemons);
+    
+    const handleType = updateTypes.length <= 0;
+    if(handleType){
+      setError((error) => ({
+        ...error, 
+        types: "Por favor selecciona al menos un genero"
+      }));
+    }else{
+      setError((error) => ({
+        ...error, 
+        types: ""
+      }))
+    }
+  }
+
+  //Al hacer click en el boton se ejecuta, se envian los datos al servidor. Una vez creado me redirige al detalle del pokemon
+  const endpoint = process.env.REACT_APP_URL 
+  const sendPokemons = async (event) => { 
     event.preventDefault()
     try {
       // Usar axios directamente
@@ -53,46 +90,6 @@ const Form = () => {
       console.log("Error al crear Pokémon:", error);
   }
   } 
-
-  const handleChange = (event) => {
-    const {name, value} = event.target;
-
-    setPokemons({
-      ...pokemons, 
-      [name] : value
-    })
-
-    setError(validation(pokemons))
-  }
-
-  const handleChangeType = (event) => {
-    const tpName = event.target.value;
-    const isChecked = event.target.checked;
-
-    let updateTypes;
-
-    if(isChecked){
-      updateTypes = [...pokemons.types, tpName];
-    }else{
-      updateTypes = pokemons.types.filter((tps) => tps !== tpName);
-    }
-
-    setPokemons({...pokemons, types: updateTypes});
-    console.log(pokemons);
-
-    const handleType = updateTypes.length <= 0;
-    if(handleType){
-      setError((error) => ({
-        ...error, 
-        types: "Por favor selecciona al menos un genero"
-      }));
-    }else{
-      setError((error) => ({
-        ...error, 
-        types: ""
-      }))
-    }
-  }
 
 return (
   <div class="formContainerWrapper">
@@ -157,7 +154,7 @@ return (
             <div className="typeContainer">
               <div className="grid">
               {
-                type.map(pk => {
+                type.map(pk => { //Recorre el array de tipos y por cada uno muestra un checkbox y un nombre
                   return (
                     <div className="typeItem" key={pk.id}>
                       <input

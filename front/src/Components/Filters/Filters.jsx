@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTypes, orderByOrigin, orderByType, orderPokes } from "../../Redux/actions";
 import { useEffect, useState } from "react";
 
-
+//Despacha la action con los tipos de ordenamientos y el estado con los pokemones, y es la action la que se encarga de filtrarlo o ordenarlos en todo caso. 
 
 
 const Filters = () => {
@@ -35,7 +35,7 @@ const Filters = () => {
 
 
     const handleTypeChange = (event) => {  //Esta es mi funcion es la que guarda en un array con los seleccionados 
-       const typeName = event.target.value;
+       const typeName = event.target.value; 
        let selected;
 
        if(selectedType.includes(typeName)){ 
@@ -45,7 +45,6 @@ const Filters = () => {
          setSelectedType([...selectedType, typeName]);
          selected = [...selectedType, typeName]
        }
-    //    const selected = [...selectedType];
     
        dispatch(orderByType(pokemonsCopy, selected));
        console.log(selected);

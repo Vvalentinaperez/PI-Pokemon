@@ -26,15 +26,15 @@ const postPokemons = async (req, res) => {
         });
 
 
-        const typeName = await Type.findAll({
+        const typeName = await Type.findAll({  //Busca por nombre en la tabla de tipos
             where: {name: types}
         })
         
      
-        await pokemons.addType(typeName);
+        await pokemons.addType(typeName);  //Y agrega ese array a mi pokemon ya creado
             
     
-        const result = await Pokemon.findByPk(pokemons.id, {
+        const result = await Pokemon.findByPk(pokemons.id, {  //Va a buscar el poke que cree por el id, y le agrega sus tipos para dar una respuesta
             include: {
                 model:Type, 
                 through: "Pokemons_type"
@@ -43,7 +43,6 @@ const postPokemons = async (req, res) => {
         return res.status(201).json(result);
         
     } catch (error) {
-        console.log(error.message);
         return res.status(500).json(error.message);
     }
 }

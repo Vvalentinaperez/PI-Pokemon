@@ -117,7 +117,7 @@ export const orderByType = (pokemonsCopy, selected) => { //Esta es la funcion qu
           const matchesSelectedType = selected.length === 0 || 
           selected.every((type) => pokemon.types.includes(type))
           return matchesSelectedType;
-      })
+      }) //valida por cada uno de los tipos si lo incluye, lo guarda 
       
       return {type: ORDER_BY_TYPE, payload: filteredPokemon}
 

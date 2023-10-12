@@ -9,8 +9,8 @@ const { Pokemon, Type} = require("../db");
 const getPokemonById = async (req, res) => {
     try {
         const { id } = req.params;
+        //Testea el id con esa regex, para ver si el id es de tipo UUID, y si si lo es me va a devolver true o false.
         const isUUID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id);
-
         let pokemon;
 
         if(isUUID){

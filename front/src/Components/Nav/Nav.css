@@ -11,3 +11,9 @@
 .search-container {
     order: 2
 }
+.button_home {
+    position: absolute; 
+    top: 19px;         
+    right: 310px;        
+    z-index: 1000;    
+}

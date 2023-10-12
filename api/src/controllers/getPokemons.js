@@ -25,8 +25,8 @@ const getPokemons = async (_req, res) => {
         return pokemon;
       }))
      }
-    console.log(pokeType);
-     
+    
+    
       const { data } = await axios(`${URL}?limit=48`)
       const results = data.results; 
 
