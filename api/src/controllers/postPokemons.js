@@ -11,9 +11,17 @@ const postPokemons = async (req, res) => {
         if(!name || !image || !life || !attack || !defense || !height || !weight || !speed || !types){
             res.status(400).send("Faltan datos");
         }
-
+        
         if(types.length === 0) return res.status(400).send("Agrega al menos un tipo");
         
+        const nameVerify = await Pokemon.findOne({
+            where: {name}
+        })
+
+        if(nameVerify){
+            return res.status(404).send("El nombre ya existe");
+        }
+
         const pokemons = await Pokemon.create({
             name, 
             image, 

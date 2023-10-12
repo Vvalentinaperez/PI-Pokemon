@@ -1,3 +1,8 @@
+.search-container {
+ margin-right: 40px;
+}
+
+
 .search-input {
     color: #8707ff;
     border: 2px solid #8707ff;
@@ -40,5 +45,9 @@
     transform: translateY(5px);
     transition: 100ms;
    }
-     
+
+  .button_home{
+    position: absolute;
+    transform: translateX(380%) translateY(-10%)
+  }
   

@@ -29,7 +29,7 @@ export const getPokemons = () => {
 export const getPokeDetail = (id) => {
     return async (dispatch) => {
         try {
-            // console.log(id);
+            
             const { data } = await axios.get(`${endpoint}/pokemon/${id}`)
            
             if(!data){
